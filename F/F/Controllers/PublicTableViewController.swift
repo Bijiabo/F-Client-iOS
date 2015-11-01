@@ -33,8 +33,6 @@ class PublicTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        _loadData()
-        
         _setupViews()
         
         tableView.separatorStyle = UITableViewCellSeparatorStyle.None
@@ -243,13 +241,6 @@ class PublicTableViewController: UITableViewController {
     }
     */
     
-    // MARK: - Data Functions
-    private func _loadData () {
-        let dataFileURL = NSBundle.mainBundle().resourceURL!.URLByAppendingPathComponent("Data/test.json")
-        guard let dataNSData = NSData(contentsOfURL: dataFileURL) else {return}
-        let allData = JSON(data: dataNSData)
-        data = allData[mode]
-    }
     
     // MARK: - User Interface Functions
     private func _setupViews () {
@@ -262,7 +253,6 @@ class PublicTableViewController: UITableViewController {
         
         //update navigationBarItem
         if let rightNavigationBarTitle = data["rightButtonItem"].string {
-            //navigationItem.rightBarButtonItem = UIBarButtonItem(title: rightNavigationBarTitle, style: UIBarButtonItemStyle.Done ,target: self, action: Selector("tapRightNavigationBarItem:") )
             
             let rightLabel = UILabel()
             rightLabel.attributedText = NSAttributedString(string: rightNavigationBarTitle, attributes: [
@@ -270,7 +260,7 @@ class PublicTableViewController: UITableViewController {
                 NSForegroundColorAttributeName: UIColor.whiteColor()
                 ])
             rightLabel.sizeToFit()
-            navigationItem.rightBarButtonItem = UIBarButtonItem(customView: rightLabel)
+            navigationItem.rightBarButtonItem = UIBarButtonItem(title: rightNavigationBarTitle, style: UIBarButtonItemStyle.Done,target: self, action: Selector("tapRightNavigationBarItem:"))
         }
         
         //add tap gesture
@@ -279,7 +269,8 @@ class PublicTableViewController: UITableViewController {
     }
     
     func tapRightNavigationBarItem(sender: UIBarButtonItem) {
-        //do something here...
+        guard let referenceID = data["rightButtonReference"].string else {return}
+        FTool.UI.pushFormController(navigationController, formID: referenceID)
     }
     
     func userTapView(sender: UITapGestureRecognizer) {

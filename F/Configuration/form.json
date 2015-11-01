@@ -64,6 +64,7 @@
   "login": {
     "title": "登陆",
     "rightButtonItem": "注册",
+    "rightButtonReference": "register",
     "list": [
       {
         "type": "blank",
@@ -94,6 +95,10 @@
     "title": "注册",
     "rightButtonItem": "",
     "list": [
+      {
+        "type": "blank",
+        "height": 20
+      },
       {
         "type": "text_field",
         "placeHolder": "请输入手机号"

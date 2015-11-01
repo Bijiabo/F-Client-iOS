@@ -8,6 +8,7 @@
 
 import Foundation
 import SwiftyJSON
+import UIKit
 
 class FTool {
     
@@ -17,6 +18,15 @@ class FTool {
             let fileURL = NSBundle.mainBundle().resourceURL!.URLByAppendingPathComponent("Configuration/form.json")
             guard let fileData = NSData(contentsOfURL: fileURL) else {return JSON([])}
             return JSON(data: fileData)[name]
+        }
+        
+    }
+    
+    class UI {
+        class func pushFormController (navigationController: UINavigationController?, formID: String, storyBoardName: String = "Main") {
+            let viewController = UIStoryboard(name: storyBoardName, bundle: nil).instantiateViewControllerWithIdentifier("PublicTableViewController") as! PublicTableViewController
+            viewController.data = FTool.Configuration.form(name: formID)
+            navigationController?.pushViewController(viewController, animated: true)
         }
     }
 }

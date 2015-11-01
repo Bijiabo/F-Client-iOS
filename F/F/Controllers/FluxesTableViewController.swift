@@ -118,10 +118,7 @@ class FluxesTableViewController: UITableViewController {
     }
     
     func showLoginView (sender: UIBarButtonItem) {
-        let loginViewController = storyboard?.instantiateViewControllerWithIdentifier("PublicTableViewController") as! PublicTableViewController
-        loginViewController.data = FTool.Configuration.form(name: "login")
-        navigationController?.pushViewController(loginViewController, animated: true)
-        
+        FTool.UI.pushFormController(navigationController, formID: "login")
     }
 
     // MARK:
