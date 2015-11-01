@@ -105,6 +105,7 @@ class FluxesTableViewController: UITableViewController {
         navigationItem.title = "Fluxes"
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Log in", style: UIBarButtonItemStyle.Done ,target: self, action: Selector("showLoginView:"))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Refresh, target: self, action: Selector("refreshData:"))
         
         //update navigationBar style
         let navigationBar = navigationController?.navigationBar
@@ -119,6 +120,10 @@ class FluxesTableViewController: UITableViewController {
     
     func showLoginView (sender: UIBarButtonItem) {
         FTool.UI.pushFormController(navigationController, formID: "login")
+    }
+    
+    func refreshData (sender: UIBarButtonItem) {
+        _getData()
     }
 
     // MARK:

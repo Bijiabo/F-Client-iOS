@@ -73,7 +73,7 @@
       {
         "type": "text_field_with_label",
         "label": "帐号",
-        "placeHolder": "请输入手机号"
+        "placeHolder": "请输入邮箱"
       },
       {
         "type": "password_field_with_label",
@@ -100,17 +100,19 @@
         "height": 20
       },
       {
-        "type": "text_field",
-        "placeHolder": "请输入手机号"
+        "type": "text_field_with_label",
+        "label": "帐号",
+        "placeHolder": "请输入邮箱"
       },
       {
-        "type": "text_field_with_button",
-        "placeHolder": "请输入验证码",
-        "buttonText": "获取验证码 "
-      },
-      {
-        "type": "password_field",
+        "type": "password_field_with_label",
+        "label": "密码",
         "placeHolder": "请输入密码"
+      },
+      {
+        "type": "password_field_with_label",
+        "label": "确认",
+        "placeHolder": "请再次输入密码"
       },
       {
         "type": "annotation",
