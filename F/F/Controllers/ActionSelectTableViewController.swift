@@ -1,27 +1,46 @@
 //
-//  FluxesTableViewController.swift
-//  F
+//  ActionSelectTableViewController.swift
+//  CKM
 //
-//  Created by huchunbo on 15/11/1.
+//  Created by huchunbo on 15/10/27.
 //  Copyright © 2015年 TIDELAB. All rights reserved.
 //
 
 import UIKit
-import Alamofire
-import SwiftyJSON
 
-class FluxesTableViewController: UITableViewController {
+class ActionSelectTableViewController: UITableViewController {
+
+    let actions = [
+        [
+            "text": "New RecordType",
+            "action": "NewRecord"
+        ],
+        [
+            "text": "Delete RecordType",
+            "action": "DeleteRecord"
+        ],
+        [
+            "text": "Add Record",
+            "action": "AddRecord"
+        ],
+        [
+            "text": "Edit Record",
+            "action": "EditRecord"
+        ],
+        [
+            "text": "Delete Record",
+            "action": "DeleteRecord"
+        ],
+        [
+            "text": "Query",
+            "action": "Query"
+        ]
+    ]
     
-    private var _data: JSON = JSON([])
-
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        _setupViews()
-        _getData()
-        
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
+        self.clearsSelectionOnViewWillAppear = true
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
@@ -35,24 +54,21 @@ class FluxesTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return _data.count
+        return actions.count
     }
 
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("fluxes", forIndexPath: indexPath) as! FluxesTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
 
-        cell.textLabel?.text = _data[indexPath.row]["content"].string
+        // Configure the cell...
 
         return cell
     }
-
 
     /*
     // Override to support conditional editing of the table view.
@@ -98,42 +114,5 @@ class FluxesTableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
-    
-    // MARK:
-    // MARK: - View Functions
-    private func _setupViews () {
-        navigationItem.title = "Fluxes"
-        
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Log in", style: UIBarButtonItemStyle.Done ,target: self, action: Selector("showLoginView:"))
-        
-        //update navigationBar style
-        let navigationBar = navigationController?.navigationBar
-        navigationBar?.backIndicatorImage = nil
-        navigationBar?.translucent = false
-        navigationBar?.barTintColor = ViewConstants.Style.mainColor
-        navigationBar?.tintColor = UIColor.whiteColor()
-        
-        //update title
-        navigationBar?.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
-    }
-    
-    func showLoginView (sender: UIBarButtonItem) {
-        let loginViewController = storyboard?.instantiateViewControllerWithIdentifier("PublicTableViewController") as! PublicTableViewController
-        loginViewController.data = FTool.Configuration.form(name: "login")
-        navigationController?.pushViewController(loginViewController, animated: true)
-        
-    }
 
-    // MARK:
-    // MARK: - Data Functions
-    
-    private func _getData () {
-        Alamofire.request(.GET, "http://localhost:3000/fluxes.json")
-            .responseSwiftyJSON({ (request, response, json, error) in
-                if error == nil {
-                    self._data = json
-                    self.tableView.reloadData()
-                }
-            })
-    }
 }
