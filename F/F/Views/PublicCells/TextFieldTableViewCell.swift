@@ -8,9 +8,7 @@
 
 import UIKit
 
-class TextFieldTableViewCell: UITableViewCell, UITextFieldDelegate {
-
-    var delegate: PublicTableViewController?
+class TextFieldTableViewCell: PublicTableViewCell, UITextFieldDelegate {
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -44,6 +42,10 @@ class TextFieldTableViewCell: UITableViewCell, UITextFieldDelegate {
     
     func textFieldDidBeginEditing(textField: UITextField) {
         delegate?.activeTextField = textField
+    }
+    
+    func textFieldDidEndEditing(textField: UITextField) {
+        delegate?.updateInputDataById(id, data: textField.text)
     }
 
 }

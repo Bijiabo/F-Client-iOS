@@ -8,7 +8,7 @@
 
 import UIKit
 
-class Indicator_TableViewCell: UITableViewCell {
+class Indicator_TableViewCell: PublicTableViewCell {
 
     @IBOutlet weak var label: UILabel!
     @IBOutlet weak var indicatorLabel: UILabel!

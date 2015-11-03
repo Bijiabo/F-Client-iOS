@@ -9,10 +9,13 @@
 import UIKit
 import Alamofire
 import SwiftyJSON
+import KeychainAccess
 
 class FluxesTableViewController: UITableViewController {
     
     private var _data: JSON = JSON([])
+    
+    let keychain = Keychain(service: "com.bijiabo")
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,6 +28,10 @@ class FluxesTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        
+        // test
+        keychain["token"] = "01234567-89ab-cdef-0123-456789abcdef"
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -105,6 +112,7 @@ class FluxesTableViewController: UITableViewController {
         navigationItem.title = "Fluxes"
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Log in", style: UIBarButtonItemStyle.Done ,target: self, action: Selector("showLoginView:"))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Refresh, target: self, action: Selector("refreshData:"))
         
         //update navigationBar style
         let navigationBar = navigationController?.navigationBar
@@ -118,10 +126,14 @@ class FluxesTableViewController: UITableViewController {
     }
     
     func showLoginView (sender: UIBarButtonItem) {
-        let loginViewController = storyboard?.instantiateViewControllerWithIdentifier("PublicTableViewController") as! PublicTableViewController
-        loginViewController.data = FTool.Configuration.form(name: "login")
-        navigationController?.pushViewController(loginViewController, animated: true)
+        FTool.UI.pushFormController(navigationController, formID: "login")
+    }
+    
+    func refreshData (sender: UIBarButtonItem) {
+        //_getData()
         
+        //print(keychain["token"])
+        _login()
     }
 
     // MARK:
@@ -135,5 +147,22 @@ class FluxesTableViewController: UITableViewController {
                     self.tableView.reloadData()
                 }
             })
+    }
+    
+    private func _login () {
+        let parameters = [
+            "email": "bijiabo@gmail.com",
+            "password": "password"
+        ]
+        
+        Alamofire.request(.POST, "http://localhost:3000/request_new_token", parameters: parameters, encoding: ParameterEncoding.JSON)
+            .responseSwiftyJSON({ (request, response, json, error) in
+                print(error)
+                print(response)
+                if error == nil {
+                    print(json)
+                }
+            })
+        
     }
 }

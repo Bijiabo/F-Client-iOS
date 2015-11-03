@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6508CB241BE8C9D6002AEC36 /* KeychainAccess.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6508CB231BE8C9D6002AEC36 /* KeychainAccess.framework */; };
+		653917531BE915FB00EEAD6C /* PublicTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653917521BE915FB00EEAD6C /* PublicTableViewCell.swift */; };
 		6557A8E81BE600D900891879 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6557A8E71BE600D900891879 /* AppDelegate.swift */; };
 		6557A8ED1BE600D900891879 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6557A8EB1BE600D900891879 /* Main.storyboard */; };
 		6557A8F01BE600D900891879 /* F.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6557A8EE1BE600D900891879 /* F.xcdatamodeld */; };
@@ -55,6 +57,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6508CB231BE8C9D6002AEC36 /* KeychainAccess.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KeychainAccess.framework; path = Carthage/Build/iOS/KeychainAccess.framework; sourceTree = "<group>"; };
+		653917521BE915FB00EEAD6C /* PublicTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PublicTableViewCell.swift; sourceTree = "<group>"; };
 		6557A8E41BE600D900891879 /* F.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = F.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6557A8E71BE600D900891879 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6557A8EC1BE600D900891879 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -96,6 +100,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6508CB241BE8C9D6002AEC36 /* KeychainAccess.framework in Frameworks */,
 				6557A9281BE6107100891879 /* SwiftyJSON.framework in Frameworks */,
 				6557A92A1BE611FF00891879 /* Alamofire.framework in Frameworks */,
 			);
@@ -118,12 +123,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		653917541BE9160200EEAD6C /* BasicClass */ = {
+			isa = PBXGroup;
+			children = (
+				6557A93D1BE6489D00891879 /* TextFieldTableViewCell.swift */,
+				653917521BE915FB00EEAD6C /* PublicTableViewCell.swift */,
+			);
+			name = BasicClass;
+			sourceTree = "<group>";
+		};
 		6557A8DB1BE600D900891879 = {
 			isa = PBXGroup;
 			children = (
-				6557A9561BE65FE000891879 /* Configuration */,
+				6508CB231BE8C9D6002AEC36 /* KeychainAccess.framework */,
 				6557A9291BE611FF00891879 /* Alamofire.framework */,
 				6557A9271BE6107100891879 /* SwiftyJSON.framework */,
+				6557A9561BE65FE000891879 /* Configuration */,
 				6557A9241BE60F7D00891879 /* Library */,
 				6557A8E61BE600D900891879 /* F */,
 				6557A8FE1BE600D900891879 /* FTests */,
@@ -214,6 +229,7 @@
 		6557A94D1BE648A800891879 /* PublicCells */ = {
 			isa = PBXGroup;
 			children = (
+				653917541BE9160200EEAD6C /* BasicClass */,
 				6557A9351BE6489D00891879 /* Annotation_TableViewCell.swift */,
 				6557A9361BE6489D00891879 /* AvatarTableViewCell.swift */,
 				6557A9371BE6489D00891879 /* BlockButton_TableViewCell.swift */,
@@ -222,7 +238,6 @@
 				6557A93A1BE6489D00891879 /* PasswordField_TableViewCell.swift */,
 				6557A93B1BE6489D00891879 /* PasswordFieldWithLabel_TableViewCell.swift */,
 				6557A93C1BE6489D00891879 /* TextField_TableViewCell.swift */,
-				6557A93D1BE6489D00891879 /* TextFieldTableViewCell.swift */,
 				6557A93E1BE6489D00891879 /* TextFieldWithButton_TableViewCell.swift */,
 				6557A93F1BE6489D00891879 /* TextFieldWithLabel_TableViewCell.swift */,
 				6557A9401BE6489D00891879 /* TextFieldWithLabelFullWidth_TableViewCell.swift */,
@@ -366,6 +381,7 @@
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/iOS/SwiftyJSON.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/KeychainAccess.framework",
 			);
 			outputPaths = (
 			);
@@ -399,6 +415,7 @@
 				6557A8F01BE600D900891879 /* F.xcdatamodeld in Sources */,
 				6557A9261BE60F9900891879 /* Alamofire-SwiftyJSON.swift in Sources */,
 				6557A8E81BE600D900891879 /* AppDelegate.swift in Sources */,
+				653917531BE915FB00EEAD6C /* PublicTableViewCell.swift in Sources */,
 				6557A92E1BE6181500891879 /* FluxesTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
