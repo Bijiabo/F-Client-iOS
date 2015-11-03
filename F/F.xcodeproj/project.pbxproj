@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6508CB241BE8C9D6002AEC36 /* KeychainAccess.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6508CB231BE8C9D6002AEC36 /* KeychainAccess.framework */; };
 		6557A8E81BE600D900891879 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6557A8E71BE600D900891879 /* AppDelegate.swift */; };
 		6557A8ED1BE600D900891879 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6557A8EB1BE600D900891879 /* Main.storyboard */; };
 		6557A8F01BE600D900891879 /* F.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6557A8EE1BE600D900891879 /* F.xcdatamodeld */; };
@@ -55,6 +56,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6508CB231BE8C9D6002AEC36 /* KeychainAccess.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KeychainAccess.framework; path = Carthage/Build/iOS/KeychainAccess.framework; sourceTree = "<group>"; };
 		6557A8E41BE600D900891879 /* F.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = F.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6557A8E71BE600D900891879 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6557A8EC1BE600D900891879 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -96,6 +98,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6508CB241BE8C9D6002AEC36 /* KeychainAccess.framework in Frameworks */,
 				6557A9281BE6107100891879 /* SwiftyJSON.framework in Frameworks */,
 				6557A92A1BE611FF00891879 /* Alamofire.framework in Frameworks */,
 			);
@@ -121,6 +124,7 @@
 		6557A8DB1BE600D900891879 = {
 			isa = PBXGroup;
 			children = (
+				6508CB231BE8C9D6002AEC36 /* KeychainAccess.framework */,
 				6557A9561BE65FE000891879 /* Configuration */,
 				6557A9291BE611FF00891879 /* Alamofire.framework */,
 				6557A9271BE6107100891879 /* SwiftyJSON.framework */,
@@ -366,6 +370,7 @@
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/iOS/SwiftyJSON.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/KeychainAccess.framework",
 			);
 			outputPaths = (
 			);

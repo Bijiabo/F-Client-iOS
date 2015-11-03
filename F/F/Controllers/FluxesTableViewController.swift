@@ -9,10 +9,13 @@
 import UIKit
 import Alamofire
 import SwiftyJSON
+import KeychainAccess
 
 class FluxesTableViewController: UITableViewController {
     
     private var _data: JSON = JSON([])
+    
+    let keychain = Keychain(service: "com.bijiabo")
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,6 +28,10 @@ class FluxesTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        
+        // test
+        keychain["token"] = "01234567-89ab-cdef-0123-456789abcdef"
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -124,6 +131,8 @@ class FluxesTableViewController: UITableViewController {
     
     func refreshData (sender: UIBarButtonItem) {
         _getData()
+        
+        print(keychain["token"])
     }
 
     // MARK:
