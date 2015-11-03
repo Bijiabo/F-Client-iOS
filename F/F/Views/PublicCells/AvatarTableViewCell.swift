@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AvatarTableViewCell: UITableViewCell {
+class AvatarTableViewCell: PublicTableViewCell {
 
     @IBOutlet weak var avatarImageView: UIImageView!
     

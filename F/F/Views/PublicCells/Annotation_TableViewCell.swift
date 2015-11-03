@@ -8,7 +8,7 @@
 
 import UIKit
 
-class Annotation_TableViewCell: UITableViewCell {
+class Annotation_TableViewCell: PublicTableViewCell {
 
     @IBOutlet weak var label: UILabel!
     

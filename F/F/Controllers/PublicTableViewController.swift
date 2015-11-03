@@ -22,8 +22,8 @@ class PublicTableViewController: UITableViewController {
     }
     var activeTextField: UITextField?
     var mode = "login"
-
-    var listDataType = ListType.Single
+    var listDataType = ListType.Single //default listType
+    var userInputData: [String: String] = [String: String]()
     
     enum  ListType {
         case Single
@@ -36,12 +36,6 @@ class PublicTableViewController: UITableViewController {
         _setupViews()
         
         tableView.separatorStyle = UITableViewCellSeparatorStyle.None
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
 
     override func didReceiveMemoryWarning() {
@@ -108,7 +102,8 @@ class PublicTableViewController: UITableViewController {
             cell.label.text = cellData["label"]?.stringValue
             cell.textField.placeholder = cellData["placeHolder"]?.stringValue
             cell.backgroundColor = UIColor.clearColor()
-            cell.delegate = self
+            
+            _setupCell(cell, cellData: cellData)
             
             return cell
             
@@ -117,7 +112,8 @@ class PublicTableViewController: UITableViewController {
             cell.label.text = cellData["label"]?.stringValue
             cell.passwordField.placeholder = cellData["placeHolder"]?.stringValue
             cell.backgroundColor = UIColor.clearColor()
-            cell.delegate = self
+            
+            _setupCell(cell, cellData: cellData)
             
             return cell
             
@@ -142,6 +138,8 @@ class PublicTableViewController: UITableViewController {
                 break
             }
             
+            _setupCell(cell, cellData: cellData)
+            
             return cell
             
         case "block_button":
@@ -149,19 +147,23 @@ class PublicTableViewController: UITableViewController {
             cell.blockButton.setTitle(cellData["text"]?.stringValue, forState: UIControlState.Normal)
             cell.backgroundColor = UIColor.clearColor()
             
+            _setupCell(cell, cellData: cellData)
+            
             return cell
             
         case "text_field":
             let cell = tableView.dequeueReusableCellWithIdentifier("textfieldCell", forIndexPath: indexPath) as! TextField_TableViewCell
             cell.textField.placeholder = cellData["placeHolder"]?.stringValue
-            cell.delegate = self
+            
+            _setupCell(cell, cellData: cellData)
             
             return cell
             
         case "password_field":
             let cell = tableView.dequeueReusableCellWithIdentifier("passwordFieldCell", forIndexPath: indexPath) as! PasswordField_TableViewCell
             cell.passwordField.placeholder = cellData["placeHolder"]?.stringValue
-            cell.delegate = self
+
+            _setupCell(cell, cellData: cellData)
             
             return cell
             
@@ -169,7 +171,8 @@ class PublicTableViewController: UITableViewController {
             let cell = tableView.dequeueReusableCellWithIdentifier("textfieldWithButtonCell", forIndexPath: indexPath) as! TextFieldWithButton_TableViewCell
             cell.textField.placeholder = cellData["placeHolder"]?.stringValue
             cell.button.setTitle(cellData["buttonText"]?.stringValue, forState: UIControlState.Normal)
-            cell.delegate = self
+            
+            _setupCell(cell, cellData: cellData)
             
             return cell
             
@@ -177,7 +180,8 @@ class PublicTableViewController: UITableViewController {
             let cell = tableView.dequeueReusableCellWithIdentifier("textFieldWithLabelFullWidthCell", forIndexPath: indexPath) as! TextFieldWithLabelFullWidth_TableViewCell
             cell.textField.placeholder = cellData["placeHolder"]?.stringValue
             cell.label.text = cellData["label"]?.stringValue
-            cell.delegate = self
+            
+            _setupCell(cell, cellData: cellData)
             
             return cell
             
@@ -185,12 +189,16 @@ class PublicTableViewController: UITableViewController {
             let cell = tableView.dequeueReusableCellWithIdentifier("avatarCell", forIndexPath: indexPath) as! AvatarTableViewCell
             cell.avatarImageView.image = UIImage(named: cellData["image"]!.stringValue)
             
+            _setupCell(cell, cellData: cellData)
+            
             return cell
             
         case "indicator":
             let cell = tableView.dequeueReusableCellWithIdentifier("indicatorCell", forIndexPath: indexPath) as! Indicator_TableViewCell
             cell.label.text = cellData["label"]?.stringValue
             cell.indicatorLabel.text = cellData["indicatorLabel"]?.stringValue
+            
+            _setupCell(cell, cellData: cellData)
             
             return cell
             
@@ -274,14 +282,45 @@ class PublicTableViewController: UITableViewController {
     }
     
     func userTapView(sender: UITapGestureRecognizer) {
+        resignFirstResponderForActiveTextField()
+    }
+    
+    func userTapBackButton(sender: UIBarButtonItem) {
+        navigationController?.popViewControllerAnimated(true)
+
+    }
+    
+    func resignFirstResponderForActiveTextField () {
         if activeTextField != nil {
             activeTextField?.resignFirstResponder()
             activeTextField = nil
         }
     }
     
-    func userTapBackButton(sender: UIBarButtonItem) {
-        navigationController?.popViewControllerAnimated(true)
-
+    // MARK:
+    // MARK: - public cell functions
+    private func _setupCell (cell: PublicTableViewCell, cellData: [String: JSON]?) {
+        cell.delegate = self
+        
+        if let id = cellData?["id"]?.string {
+            cell.id = id
+        }
+        
+        if let action = cellData?["action"]?.string {
+            cell.action = action
+        }
+        
+    }
+    
+    func updateInputDataById (id: String?, data: String?) {
+        if let id = id, let data = data {
+            userInputData[id] = data
+        }
+    }
+    
+    func submit () {
+        resignFirstResponderForActiveTextField()
+        
+        print(userInputData)
     }
 }

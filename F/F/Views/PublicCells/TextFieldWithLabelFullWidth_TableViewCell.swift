@@ -8,11 +8,10 @@
 
 import UIKit
 
-class TextFieldWithLabelFullWidth_TableViewCell: UITableViewCell, UITextFieldDelegate {
+class TextFieldWithLabelFullWidth_TableViewCell: PublicTableViewCell, UITextFieldDelegate {
 
     @IBOutlet weak var label: UILabel!
     @IBOutlet weak var textField: UITextField!
-    var delegate: PublicTableViewController?
     
     override func awakeFromNib() {
         super.awakeFromNib()

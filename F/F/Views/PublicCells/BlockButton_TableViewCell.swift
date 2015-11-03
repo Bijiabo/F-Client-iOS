@@ -8,7 +8,7 @@
 
 import UIKit
 
-class BlockButton_TableViewCell: UITableViewCell {
+class BlockButton_TableViewCell: PublicTableViewCell {
 
     @IBOutlet weak var blockButton: UIButton!
     
@@ -18,12 +18,19 @@ class BlockButton_TableViewCell: UITableViewCell {
         
         blockButton.backgroundColor = ViewConstants.Style.mainColor
         blockButton.layer.cornerRadius = ViewConstants.cellBlockButtonCornerRadius
+        blockButton.addTarget(self, action: Selector("tapButton:"), forControlEvents: UIControlEvents.TouchUpInside)
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+    func tapButton (sender: UIButton) {
+        if action == "submit" {
+            delegate?.submit()
+        }
     }
 
 }

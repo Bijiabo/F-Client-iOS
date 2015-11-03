@@ -1,70 +1,9 @@
 {
-  "actionList": {
-    "title": "Actions",
-    "rightButtonItem": "?",
-    "table": [
-      {
-        "sectionTitle": "RecordType",
-        "list": [
-          {
-            "type": "indicator",
-            "label": "Create",
-            "reference": "createRecordType"
-          },
-          {
-            "type": "indicator",
-            "label": "Delete"
-          },
-          {
-            "type": "indicator",
-            "label": "Find"
-          },
-          {
-            "type": "indicator",
-            "label": "Edit"
-          }
-        ]
-      },
-      {
-        "sectionTitle": "Record",
-        "list": [
-          {
-            "type": "indicator",
-            "label": "Create"
-          },
-          {
-            "type": "indicator",
-            "label": "Delete"
-          },
-          {
-            "type": "indicator",
-            "label": "Find"
-          },
-          {
-            "type": "indicator",
-            "label": "Edit"
-          }
-        ]
-      }
-    ]
-  },
-  "createRecordType": {
-    "title": "Create RecordType",
-    "rightButtonItem": "Done",
-    "rightButtonAction": "createRecordType(recordType.textField.value)",
-    "list": [
-      {
-        "type": "text_field_with_label",
-        "label": "RecordType",
-        "placeHolder": "String",
-        "id": "recordType"
-      }
-    ]
-  },
   "login": {
     "title": "登陆",
     "rightButtonItem": "注册",
     "rightButtonReference": "register",
+    "submitPath": "request_new_token",
     "list": [
       {
         "type": "blank",
@@ -73,12 +12,14 @@
       {
         "type": "text_field_with_label",
         "label": "帐号",
-        "placeHolder": "请输入邮箱"
+        "placeHolder": "请输入邮箱",
+        "id": "email"
       },
       {
         "type": "password_field_with_label",
         "label": "密码",
-        "placeHolder": "请输入密码"
+        "placeHolder": "请输入密码",
+        "id": "password"
       },
       {
         "type": "annotation",
@@ -87,7 +28,8 @@
       },
       {
         "type": "block_button",
-        "text": "登陆"
+        "text": "登陆",
+        "action": "submit"
       }
     ]
   },

@@ -130,9 +130,10 @@ class FluxesTableViewController: UITableViewController {
     }
     
     func refreshData (sender: UIBarButtonItem) {
-        _getData()
+        //_getData()
         
-        print(keychain["token"])
+        //print(keychain["token"])
+        _login()
     }
 
     // MARK:
@@ -146,5 +147,22 @@ class FluxesTableViewController: UITableViewController {
                     self.tableView.reloadData()
                 }
             })
+    }
+    
+    private func _login () {
+        let parameters = [
+            "email": "bijiabo@gmail.com",
+            "password": "password"
+        ]
+        
+        Alamofire.request(.POST, "http://localhost:3000/request_new_token", parameters: parameters, encoding: ParameterEncoding.JSON)
+            .responseSwiftyJSON({ (request, response, json, error) in
+                print(error)
+                print(response)
+                if error == nil {
+                    print(json)
+                }
+            })
+        
     }
 }
