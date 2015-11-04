@@ -3,6 +3,7 @@
     "title": "登陆",
     "rightButtonItem": "注册",
     "rightButtonReference": "register",
+    "rightButtonReferenceMode": "replace",
     "submitPath": "request_new_token",
     "list": [
       {
@@ -29,7 +30,7 @@
       {
         "type": "block_button",
         "text": "登陆",
-        "action": "submit"
+        "action": "login"
       }
     ]
   },

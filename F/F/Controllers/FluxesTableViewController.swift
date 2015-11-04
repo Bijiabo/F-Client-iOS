@@ -132,8 +132,7 @@ class FluxesTableViewController: UITableViewController {
     func refreshData (sender: UIBarButtonItem) {
         //_getData()
         
-        //print(keychain["token"])
-        _login()
+        print(FTool.Device.ID())
     }
 
     // MARK:

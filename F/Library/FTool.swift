@@ -29,4 +29,20 @@ class FTool {
             navigationController?.pushViewController(viewController, animated: true)
         }
     }
+    
+    class Device {
+        class func ID () -> String {
+            let userDefaults = NSUserDefaults.standardUserDefaults()
+            
+            if let id = userDefaults.objectForKey("ApplicationUniqueIdentifier") as? String {
+                return id
+            }else{
+                let UUID = NSUUID().UUIDString
+                userDefaults.setObject(UUID, forKey: "ApplicationUniqueIdentifier")
+                userDefaults.synchronize()
+                
+                return UUID
+            }
+        }
+    }
 }

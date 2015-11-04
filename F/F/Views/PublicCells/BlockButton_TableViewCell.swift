@@ -28,9 +28,7 @@ class BlockButton_TableViewCell: PublicTableViewCell {
     }
     
     func tapButton (sender: UIButton) {
-        if action == "submit" {
-            delegate?.submit()
-        }
+        delegate?.submit(action: action)
     }
 
 }

@@ -278,7 +278,14 @@ class PublicTableViewController: UITableViewController {
     
     func tapRightNavigationBarItem(sender: UIBarButtonItem) {
         guard let referenceID = data["rightButtonReference"].string else {return}
-        FTool.UI.pushFormController(navigationController, formID: referenceID)
+        guard let referenceMode = data["rightButtonReferenceMode"].string else {return}
+        
+        if referenceMode == "push" {
+            FTool.UI.pushFormController(navigationController, formID: referenceID)
+        } else {
+            
+        }
+        
     }
     
     func userTapView(sender: UITapGestureRecognizer) {
@@ -318,9 +325,20 @@ class PublicTableViewController: UITableViewController {
         }
     }
     
-    func submit () {
+    func submit (action action: String?) {
         resignFirstResponderForActiveTextField()
         
-        print(userInputData)
+        guard let action = action else {return}
+        
+        FAction().run(action, params: [userInputData], delegate: self)
+    }
+    
+    // MARK:
+    // MARK: - support func
+    
+    private func _generateArrayForParamsString (var params: String) -> Array<String> {
+        params = params.stringByReplacingOccurrencesOfString(" ", withString: "")
+        
+        return params.componentsSeparatedByString(",")
     }
 }
