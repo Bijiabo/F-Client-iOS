@@ -126,13 +126,15 @@ class FluxesTableViewController: UITableViewController {
     }
     
     func showLoginView (sender: UIBarButtonItem) {
-        FTool.UI.pushFormController(navigationController, formID: "login")
+        let vc = storyboard!.instantiateViewControllerWithIdentifier("LoginAndRegister")
+        presentViewController(vc, animated: true, completion: nil)
     }
     
     func refreshData (sender: UIBarButtonItem) {
         //_getData()
         
         print(FTool.Device.ID())
+        print(hardwareDescription())
     }
 
     // MARK:

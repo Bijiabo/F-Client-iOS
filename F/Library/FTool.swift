@@ -8,6 +8,7 @@
 
 import Foundation
 import SwiftyJSON
+import KeychainAccess
 import UIKit
 
 class FTool {
@@ -44,5 +45,18 @@ class FTool {
                 return UUID
             }
         }
+        
+        class func Name () -> String {
+            var deviceName = "iOS Device"
+            if let device_name = hardwareDescription() {
+                deviceName = device_name
+            }
+            
+            return deviceName
+        }
+    }
+    
+    class func KeyChain () -> Keychain {
+        return Keychain(service: "com.bijiabo")
     }
 }

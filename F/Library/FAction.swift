@@ -53,4 +53,60 @@ class FAction: NSObject {
         
         _actions[action]?(params, delegate)
     }
+    
+    // MARK:
+    // MARK: actions
+    class func login (email: String, password: String, completeHandler: (success: Bool, description: String)->Void ) {
+        
+        let parameters = [
+            "email": email,
+            "password": password,
+            "deviceID": FTool.Device.ID(),
+            "deviceName": FTool.Device.Name()
+        ]
+        
+        Alamofire.request(.POST, "\(Config.host)request_new_token", parameters: parameters, encoding: ParameterEncoding.JSON)
+            .responseSwiftyJSON({ (request, response, json, error) in
+                var success: Bool = false
+                var description: String = String()
+                
+                if error == nil {
+                    success = !json["error"].boolValue
+                    if !success {
+                        description = json["description"].stringValue
+                    }
+                    
+                    //save token
+                    FTool.KeyChain()["token"] = json["token"]["token"].stringValue
+                }
+                
+                completeHandler(success: success, description: description)
+            })
+    }
+    
+    class func register (email: String, name: String, password: String, completeHandler: (success: Bool, description: String)->Void ) {
+        
+        let parameters = [
+            "email": email,
+            "name": name,
+            "password": password
+        ]
+        
+        Alamofire.request(.POST, "\(Config.host)register_new_user", parameters: parameters, encoding: ParameterEncoding.JSON)
+            .responseSwiftyJSON({ (request, response, json, error) in
+                var success: Bool = false
+                var description: String = String()
+                
+                if error == nil {
+                    success = !json["error"].boolValue
+                    if !success {
+                        description = json["description"].stringValue
+                        
+                        completeHandler(success: success, description: description)
+                    } else {
+                        FAction.login(email, password: password, completeHandler: completeHandler)
+                    }
+                }  
+            })
+    }
 }
