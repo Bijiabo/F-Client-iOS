@@ -10,4 +10,5 @@ import Foundation
 
 struct Config {
     static let host = "http://localhost:3000/"
+    static let Secret_key = "Change"
 }

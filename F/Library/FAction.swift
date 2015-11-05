@@ -89,9 +89,11 @@ class FAction: NSObject {
         let parameters = [
             "email": email,
             "name": name,
-            "password": password
+            "password": password,
+            "verification": (email + Config.Secret_key).sha1()
         ]
         
+        //TODO: finish viewController
         Alamofire.request(.POST, "\(Config.host)register_new_user", parameters: parameters, encoding: ParameterEncoding.JSON)
             .responseSwiftyJSON({ (request, response, json, error) in
                 var success: Bool = false
@@ -106,7 +108,7 @@ class FAction: NSObject {
                     } else {
                         FAction.login(email, password: password, completeHandler: completeHandler)
                     }
-                }  
+                }
             })
     }
 }
