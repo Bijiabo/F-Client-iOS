@@ -27,6 +27,11 @@ struct FHelper {
         FTool.keychain.defaultKeychain()["tokenID"] = id
     }
     
+    static func clearToken () {
+        FTool.keychain.defaultKeychain()["token"] = nil
+        FTool.keychain.defaultKeychain()["tokenID"] = nil
+    }
+    
     // MARK:
     // MARK: - user information
     static var current_user: User {
@@ -54,7 +59,13 @@ struct FHelper {
     // MARK: - user functions
     
     static var logged_in: Bool {
-        return !token.isEmpty
+        if
+        let token = try? FTool.keychain.defaultKeychain().getString("token"),
+        let tokenID = try? FTool.keychain.defaultKeychain().getString("tokenID")
+        {
+            if token != nil && tokenID != nil {return true}
+        }
+        return false
     }
     
     static func current_user (user_id: Int) -> Bool {

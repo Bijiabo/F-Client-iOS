@@ -91,7 +91,6 @@ class FAction: NSObject {
             "name": name,
             "password": password,
             "password_confirmation": password
-            //"verification": (email + Config.Secret_key).sha1()
         ]
         
         //TODO: finish viewController
