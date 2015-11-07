@@ -27,6 +27,27 @@ class Register: UIViewController {
     }
 
     @IBAction func tapRegisterButton(sender: AnyObject) {
+        if
+        let email = emailTextField.text,
+        let name = nameTextField.text,
+        let password = passwordTextField.text
+        {
+            FAction.register(email, name: name, password: password, completeHandler: { (success, description) -> Void in
+                
+                if success {
+                    self.dismissViewControllerAnimated(true, completion: nil)
+                } else {
+                    print(description)
+                }
+                
+            })
+        }
+        else
+        {
+            print("ui error")
+        }
+        
+        
     }
     
 }

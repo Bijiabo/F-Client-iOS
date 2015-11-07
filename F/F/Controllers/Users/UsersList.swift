@@ -1,34 +1,22 @@
 //
-//  FluxesTableViewController.swift
+//  UsersList.swift
 //  F
 //
-//  Created by huchunbo on 15/11/1.
+//  Created by huchunbo on 15/11/6.
 //  Copyright © 2015年 TIDELAB. All rights reserved.
 //
-
-import UIKit
 import Alamofire
 import SwiftyJSON
-import KeychainAccess
+import UIKit
 
-class FluxesTableViewController: UITableViewController {
+class UsersList: UITableViewController {
     
     private var _data: JSON = JSON([])
-    
-    let keychain = Keychain(service: "com.bijiabo")
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        _setupViews()
-        _getData()
-        
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
 
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-        
+        _getUsersList()
     }
 
     override func didReceiveMemoryWarning() {
@@ -50,9 +38,9 @@ class FluxesTableViewController: UITableViewController {
 
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("fluxes", forIndexPath: indexPath) as! FluxesTableViewCell
+        let cell = UITableViewCell() //tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
 
-        cell.textLabel?.text = _data[indexPath.row]["content"].string
+        cell.textLabel?.text = _data[indexPath.row]["name"].string
 
         return cell
     }
@@ -102,57 +90,24 @@ class FluxesTableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
-    
-    // MARK:
-    // MARK: - View Functions
-    private func _setupViews () {
-        navigationItem.title = "Fluxes"
-        
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Log in", style: UIBarButtonItemStyle.Done ,target: self, action: Selector("showLoginView:"))
-        
-        FTool.UI.setupNavigationBarStyle(navigationController: navigationController)
-    }
-    
-    func showLoginView (sender: UIBarButtonItem) {
-        let vc = storyboard!.instantiateViewControllerWithIdentifier("LoginAndRegister")
-        presentViewController(vc, animated: true, completion: nil)
-    }
-    
-    func refreshData (sender: UIBarButtonItem) {
-        //_getData()
-        
-        print(FTool.Device.ID())
-        print(hardwareDescription())
-    }
 
-    
     // MARK:
-    // MARK: - Data Functions
-    
-    private func _getData () {
-        Alamofire.request(.GET, "http://localhost:3000/fluxes.json")
-            .responseSwiftyJSON({ (request, response, json, error) in
-                if error == nil {
-                    self._data = json
-                    self.tableView.reloadData()
-                }
-            })
-    }
-    
-    private func _login () {
-        let parameters = [
-            "email": "bijiabo@gmail.com",
-            "password": "password"
-        ]
-        
-        Alamofire.request(.POST, "http://localhost:3000/request_new_token", parameters: parameters, encoding: ParameterEncoding.JSON)
-            .responseSwiftyJSON({ (request, response, json, error) in
+    // MARK: - network functions
+    private func _getUsersList () {
+        FAction.userList { (request, response, json, error) -> Void in
+            if error == nil {
+                self._data = json
+                self.tableView.reloadData()
+            }else{
                 print(error)
-                print(response)
-                if error == nil {
-                    print(json)
-                }
-            })
-        
+            }
+        }
     }
+    
+    @IBAction func taplogoutButton(sender: AnyObject) {
+        FAction.logout()
+        
+        navigationController?.popViewControllerAnimated(true)
+    }
+    
 }

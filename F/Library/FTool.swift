@@ -29,6 +29,18 @@ class FTool {
             viewController.data = FTool.Configuration.form(name: formID)
             navigationController?.pushViewController(viewController, animated: true)
         }
+        
+        class func setupNavigationBarStyle (navigationController navigationController: UINavigationController?) {
+            //update navigationBar style
+            let navigationBar = navigationController?.navigationBar
+            navigationBar?.backIndicatorImage = nil
+            navigationBar?.translucent = false
+            navigationBar?.barTintColor = ViewConstants.Style.mainColor
+            navigationBar?.tintColor = UIColor.whiteColor()
+            
+            //update title
+            navigationBar?.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
+        }
     }
     
     class Device {
@@ -56,7 +68,30 @@ class FTool {
         }
     }
     
-    class func KeyChain () -> Keychain {
-        return Keychain(service: "com.bijiabo")
+    class keychain {
+        class func defaultKeychain () -> Keychain {
+            return Keychain(service: "com.bijiabo")
+        }
+        
+        class func token () -> String {
+            if let token = FTool.keychain.defaultKeychain()["token"] {
+                return token
+            }
+            return ""
+        }
+        
+        class func tokenID () -> String {
+            if let token = FTool.keychain.defaultKeychain()["tokenID"] {
+                return token
+            }
+            return ""
+        }
+        
+        class func setToken (id id: String, token: String) {
+            FTool.keychain.defaultKeychain()["token"] = token
+            FTool.keychain.defaultKeychain()["tokenID"] = id
+        }
     }
+    
+    
 }

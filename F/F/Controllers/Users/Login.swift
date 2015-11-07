@@ -20,7 +20,7 @@ class Login: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        FTool.UI.setupNavigationBarStyle(navigationController: navigationController)
     }
 
     override func didReceiveMemoryWarning() {
@@ -43,6 +43,10 @@ class Login: UIViewController {
             
         })
         
+    }
+    
+    @IBAction func tapCloseButton(sender: AnyObject) {
+        dismissViewControllerAnimated(true, completion: nil)
     }
     
     

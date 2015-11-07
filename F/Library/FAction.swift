@@ -65,10 +65,10 @@ class FAction: NSObject {
             "deviceName": FTool.Device.Name()
         ]
         
-        Alamofire.request(.POST, "\(Config.host)request_new_token", parameters: parameters, encoding: ParameterEncoding.JSON)
+        Alamofire.request(.POST, "\(Config.host)request_new_token.json", parameters: parameters, encoding: ParameterEncoding.JSON)
             .responseSwiftyJSON({ (request, response, json, error) in
                 var success: Bool = false
-                var description: String = String()
+                var description: String = error.debugDescription
                 
                 if error == nil {
                     success = !json["error"].boolValue
@@ -77,7 +77,7 @@ class FAction: NSObject {
                     }
                     
                     //save token
-                    FTool.KeyChain()["token"] = json["token"]["token"].stringValue
+                    FTool.keychain.setToken(id: json["token"]["id"].stringValue, token: json["token"]["token"].stringValue)
                 }
                 
                 completeHandler(success: success, description: description)
@@ -90,12 +90,14 @@ class FAction: NSObject {
             "email": email,
             "name": name,
             "password": password,
-            "verification": (email + Config.Secret_key).sha1()
+            "password_confirmation": password
+            //"verification": (email + Config.Secret_key).sha1()
         ]
         
         //TODO: finish viewController
-        Alamofire.request(.POST, "\(Config.host)register_new_user", parameters: parameters, encoding: ParameterEncoding.JSON)
+        Alamofire.request(.POST, "\(Config.host)users.json", parameters: parameters, encoding: ParameterEncoding.JSON)
             .responseSwiftyJSON({ (request, response, json, error) in
+                
                 var success: Bool = false
                 var description: String = String()
                 
@@ -108,7 +110,34 @@ class FAction: NSObject {
                     } else {
                         FAction.login(email, password: password, completeHandler: completeHandler)
                     }
+                } else {
+                    description = error.debugDescription
+                    completeHandler(success: success, description: description)
                 }
+            })
+    }
+    
+    class func logout () {
+        let tokenID = FTool.keychain.tokenID()
+        let requestURL: String = "\(Config.host)tokens/\(tokenID).json?token=\(FTool.keychain.token())"
+        
+        Alamofire.request(.DELETE, requestURL, parameters: nil, encoding: ParameterEncoding.JSON)
+            .responseSwiftyJSON({
+                (request, response, json, error) in
+                
+                print(json)
+            })
+    }
+    
+    // MARK:
+    // MARK: - User
+    
+    class func userList(completeHandler: (request: NSURLRequest, response:  NSHTTPURLResponse?, json: JSON, error: ErrorType?)->Void) {
+        let requestURL = "\(Config.host)users.json?token=\(FTool.keychain.token())"
+        
+        Alamofire.request(.GET, requestURL)
+            .responseSwiftyJSON({ (request, response, json, error) in
+                completeHandler(request: request, response: response, json: json, error: error)
             })
     }
 }

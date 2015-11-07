@@ -43,6 +43,7 @@
 		656F3B1F1BEBD2FD004F62C0 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656F3B1E1BEBD2FD004F62C0 /* Login.swift */; };
 		656F3B211BEBD4CF004F62C0 /* Register.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656F3B201BEBD4CF004F62C0 /* Register.swift */; };
 		656F3B231BEBEBC5004F62C0 /* extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656F3B221BEBEBC5004F62C0 /* extension.swift */; };
+		656F3B261BEC64AE004F62C0 /* UsersList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656F3B251BEC64AE004F62C0 /* UsersList.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -106,6 +107,7 @@
 		656F3B201BEBD4CF004F62C0 /* Register.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Register.swift; sourceTree = "<group>"; };
 		656F3B221BEBEBC5004F62C0 /* extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = extension.swift; sourceTree = "<group>"; };
 		656F3B241BEBECB8004F62C0 /* Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
+		656F3B251BEC64AE004F62C0 /* UsersList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsersList.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -269,6 +271,7 @@
 			children = (
 				656F3B1E1BEBD2FD004F62C0 /* Login.swift */,
 				656F3B201BEBD4CF004F62C0 /* Register.swift */,
+				656F3B251BEC64AE004F62C0 /* UsersList.swift */,
 			);
 			path = Users;
 			sourceTree = "<group>";
@@ -428,6 +431,7 @@
 				6557A94F1BE648E200891879 /* PublicTableViewController.swift in Sources */,
 				6557A9411BE6489D00891879 /* Annotation_TableViewCell.swift in Sources */,
 				6557A9421BE6489D00891879 /* AvatarTableViewCell.swift in Sources */,
+				656F3B261BEC64AE004F62C0 /* UsersList.swift in Sources */,
 				656F3B211BEBD4CF004F62C0 /* Register.swift in Sources */,
 				6557A9431BE6489D00891879 /* BlockButton_TableViewCell.swift in Sources */,
 				6557A9441BE6489D00891879 /* FunctionTableViewCell.swift in Sources */,
