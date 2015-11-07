@@ -104,6 +104,15 @@ class Flux: UITableViewController {
                 if error == nil {
                     self._data = json
                     self.tableView.reloadData()
+                    
+                    //check if it is current user's flux
+                    guard let user_id = json["user_id"].int else {return}
+                    if FHelper.current_user(user_id) {
+                        print("you are owner!")
+                    }else{
+                        print("This is not your flux")
+                    }
+                    
                 }else{
                     print(error)
                 }

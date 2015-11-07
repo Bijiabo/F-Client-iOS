@@ -9,7 +9,6 @@
 import Foundation
 import Alamofire
 import SwiftyJSON
-import KeychainAccess
 import UIKit
 
 class FAction: NSObject {
@@ -77,7 +76,8 @@ class FAction: NSObject {
                     }
                     
                     //save token
-                    FTool.keychain.setToken(id: json["token"]["id"].stringValue, token: json["token"]["token"].stringValue)
+                    FHelper.setToken(id: json["token"]["id"].stringValue, token: json["token"]["token"].stringValue)
+                    FHelper.current_user = User(id: json["token"]["user_id"].intValue , name: json["name"].stringValue, email: json["email"].stringValue, valid: true)
                 }
                 
                 completeHandler(success: success, description: description)
@@ -118,8 +118,8 @@ class FAction: NSObject {
     }
     
     class func logout () {
-        let tokenID = FTool.keychain.tokenID()
-        let requestURL: String = "\(Config.host)tokens/\(tokenID).json?token=\(FTool.keychain.token())"
+        let tokenID = FHelper.tokenID
+        let requestURL: String = "\(Config.host)tokens/\(tokenID).json?token=\(FHelper.token)"
         
         Alamofire.request(.DELETE, requestURL, parameters: nil, encoding: ParameterEncoding.JSON)
             .responseSwiftyJSON({
@@ -133,7 +133,7 @@ class FAction: NSObject {
     // MARK: - Get
     
     class func GET(path path: String, completeHandler: (request: NSURLRequest, response:  NSHTTPURLResponse?, json: JSON, error: ErrorType?)->Void) {
-        let requestURL = "\(Config.host)\(path).json?token=\(FTool.keychain.token())"
+        let requestURL = "\(Config.host)\(path).json?token=\(FHelper.token)"
         
         Alamofire.request(.GET, requestURL)
             .responseSwiftyJSON({ (request, response, json, error) in

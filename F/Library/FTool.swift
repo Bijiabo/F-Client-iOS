@@ -68,6 +68,9 @@ class FTool {
         }
     }
     
+    // MARK:
+    // MARK: - keychain
+    
     class keychain {
         class func defaultKeychain () -> Keychain {
             return Keychain(service: "com.bijiabo")
@@ -85,11 +88,6 @@ class FTool {
                 return token
             }
             return ""
-        }
-        
-        class func setToken (id id: String, token: String) {
-            FTool.keychain.defaultKeychain()["token"] = token
-            FTool.keychain.defaultKeychain()["tokenID"] = id
         }
     }
     
