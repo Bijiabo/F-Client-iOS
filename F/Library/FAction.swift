@@ -130,10 +130,10 @@ class FAction: NSObject {
     }
     
     // MARK:
-    // MARK: - User
+    // MARK: - Get
     
-    class func userList(completeHandler: (request: NSURLRequest, response:  NSHTTPURLResponse?, json: JSON, error: ErrorType?)->Void) {
-        let requestURL = "\(Config.host)users.json?token=\(FTool.keychain.token())"
+    class func GET(path path: String, completeHandler: (request: NSURLRequest, response:  NSHTTPURLResponse?, json: JSON, error: ErrorType?)->Void) {
+        let requestURL = "\(Config.host)\(path).json?token=\(FTool.keychain.token())"
         
         Alamofire.request(.GET, requestURL)
             .responseSwiftyJSON({ (request, response, json, error) in

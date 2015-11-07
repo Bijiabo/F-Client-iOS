@@ -30,6 +30,12 @@ class FluxesTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         
     }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(true)
+        
+        __refreshTitle()
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -53,6 +59,7 @@ class FluxesTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier("fluxes", forIndexPath: indexPath) as! FluxesTableViewCell
 
         cell.textLabel?.text = _data[indexPath.row]["content"].string
+        cell.id = _data[indexPath.row]["id"].stringValue
 
         return cell
     }
@@ -93,22 +100,35 @@ class FluxesTableViewController: UITableViewController {
     }
     */
 
-    /*
+
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        guard let segueID = segue.identifier else {return}
+        
+        switch segueID {
+        case "toDetail":
+            guard let cell = sender as? FluxesTableViewCell else {break}
+            guard let id = cell.id else {break}
+            guard let vc = segue.destinationViewController as? Flux else {break}
+            vc.id = id
+            
+        default:
+            break
+        }
+        
     }
-    */
+
     
     // MARK:
     // MARK: - View Functions
     private func _setupViews () {
-        navigationItem.title = "Fluxes"
+        __title("Fluxes")
         
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Log in", style: UIBarButtonItemStyle.Done ,target: self, action: Selector("showLoginView:"))
+        tabBarController?.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Log in", style: UIBarButtonItemStyle.Done ,target: self, action: Selector("showLoginView:"))
         
         FTool.UI.setupNavigationBarStyle(navigationController: navigationController)
     }
@@ -130,13 +150,18 @@ class FluxesTableViewController: UITableViewController {
     // MARK: - Data Functions
     
     private func _getData () {
-        Alamofire.request(.GET, "http://localhost:3000/fluxes.json")
-            .responseSwiftyJSON({ (request, response, json, error) in
-                if error == nil {
-                    self._data = json
-                    self.tableView.reloadData()
-                }
-            })
+        
+        FAction.GET(path: "fluxes", completeHandler: {
+            (request, response, json, error) -> Void in
+            
+            if error == nil {
+                self._data = json
+                self.tableView.reloadData()
+            }else{
+                print(error)
+            }
+        })
+        
     }
     
     private func _login () {

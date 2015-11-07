@@ -1,30 +1,23 @@
 //
-//  UsersList.swift
+//  FTableViewController.swift
 //  F
 //
-//  Created by huchunbo on 15/11/6.
+//  Created by huchunbo on 15/11/7.
 //  Copyright © 2015年 TIDELAB. All rights reserved.
 //
-import Alamofire
-import SwiftyJSON
+
 import UIKit
 
-class UsersList: UITableViewController {
-    
-    private var _data: JSON = JSON([])
+class FTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        _getUsersList()
-        
-        __title("Users")
-    }
-    
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(true)
-        
-        __refreshTitle()
+        // Uncomment the following line to preserve selection between presentations
+        // self.clearsSelectionOnViewWillAppear = false
+
+        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
 
     override func didReceiveMemoryWarning() {
@@ -36,23 +29,23 @@ class UsersList: UITableViewController {
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 1
+        return 0
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return _data.count
+        return 0
     }
 
-
+    /*
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = UITableViewCell() //tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
 
-        cell.textLabel?.text = _data[indexPath.row]["name"].string
+        // Configure the cell...
 
         return cell
     }
-
+    */
 
     /*
     // Override to support conditional editing of the table view.
@@ -99,25 +92,4 @@ class UsersList: UITableViewController {
     }
     */
 
-    // MARK:
-    // MARK: - network functions
-    private func _getUsersList () {
-        FAction.GET(path: "users", completeHandler: {
-            (request, response, json, error) -> Void in
-            
-            if error == nil {
-                self._data = json
-                self.tableView.reloadData()
-            }else{
-                print(error)
-            }
-        })
-    }
-    
-    @IBAction func taplogoutButton(sender: AnyObject) {
-        FAction.logout()
-        
-        navigationController?.popViewControllerAnimated(true)
-    }
-    
 }

@@ -1,30 +1,25 @@
 //
-//  UsersList.swift
+//  Flux.swift
 //  F
 //
-//  Created by huchunbo on 15/11/6.
+//  Created by huchunbo on 15/11/7.
 //  Copyright © 2015年 TIDELAB. All rights reserved.
 //
-import Alamofire
-import SwiftyJSON
-import UIKit
 
-class UsersList: UITableViewController {
+import UIKit
+import SwiftyJSON
+
+class Flux: UITableViewController {
     
+    var id: String?
     private var _data: JSON = JSON([])
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        loadData()
 
-        _getUsersList()
-        
-        __title("Users")
-    }
-    
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(true)
-        
-        __refreshTitle()
+        title = "Flux Detail"
     }
 
     override func didReceiveMemoryWarning() {
@@ -41,14 +36,14 @@ class UsersList: UITableViewController {
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return _data.count
+        return 1
     }
 
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = UITableViewCell() //tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCellWithIdentifier("fluxCell", forIndexPath: indexPath) as! FluxCell
 
-        cell.textLabel?.text = _data[indexPath.row]["name"].string
+        cell.textLabel?.text = _data["content"].string
 
         return cell
     }
@@ -98,26 +93,22 @@ class UsersList: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
+    
     // MARK:
-    // MARK: - network functions
-    private func _getUsersList () {
-        FAction.GET(path: "users", completeHandler: {
-            (request, response, json, error) -> Void in
+    // MARK: - data functions
+    private func loadData () {
+        if let id = id {
+            let requestPath: String = "fluxes/\(id)"
             
-            if error == nil {
-                self._data = json
-                self.tableView.reloadData()
-            }else{
-                print(error)
-            }
-        })
+            FAction.GET(path: requestPath, completeHandler: { (request, response, json, error) -> Void in
+                if error == nil {
+                    self._data = json
+                    self.tableView.reloadData()
+                }else{
+                    print(error)
+                }
+            })
+        }
     }
-    
-    @IBAction func taplogoutButton(sender: AnyObject) {
-        FAction.logout()
-        
-        navigationController?.popViewControllerAnimated(true)
-    }
-    
+
 }
