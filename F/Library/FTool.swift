@@ -8,6 +8,7 @@
 
 import Foundation
 import SwiftyJSON
+import KeychainAccess
 import UIKit
 
 class FTool {
@@ -28,5 +29,67 @@ class FTool {
             viewController.data = FTool.Configuration.form(name: formID)
             navigationController?.pushViewController(viewController, animated: true)
         }
+        
+        class func setupNavigationBarStyle (navigationController navigationController: UINavigationController?) {
+            //update navigationBar style
+            let navigationBar = navigationController?.navigationBar
+            navigationBar?.backIndicatorImage = nil
+            navigationBar?.translucent = false
+            navigationBar?.barTintColor = ViewConstants.Style.mainColor
+            navigationBar?.tintColor = UIColor.whiteColor()
+            
+            //update title
+            navigationBar?.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
+        }
     }
+    
+    class Device {
+        class func ID () -> String {
+            let userDefaults = NSUserDefaults.standardUserDefaults()
+            
+            if let id = userDefaults.objectForKey("ApplicationUniqueIdentifier") as? String {
+                return id
+            }else{
+                let UUID = NSUUID().UUIDString
+                userDefaults.setObject(UUID, forKey: "ApplicationUniqueIdentifier")
+                userDefaults.synchronize()
+                
+                return UUID
+            }
+        }
+        
+        class func Name () -> String {
+            var deviceName = "iOS Device"
+            if let device_name = hardwareDescription() {
+                deviceName = device_name
+            }
+            
+            return deviceName
+        }
+    }
+    
+    // MARK:
+    // MARK: - keychain
+    
+    class keychain {
+        class func defaultKeychain () -> Keychain {
+            return Keychain(service: "com.bijiabo")
+        }
+        
+        class func token () -> String {
+            if let token = FTool.keychain.defaultKeychain()["token"] {
+                return token
+            }
+            return ""
+        }
+        
+        class func tokenID () -> String {
+            if let token = FTool.keychain.defaultKeychain()["tokenID"] {
+                return token
+            }
+            return ""
+        }
+    }
+    
+    
 }

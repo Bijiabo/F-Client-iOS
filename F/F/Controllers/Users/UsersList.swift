@@ -1,32 +1,24 @@
 //
-//  FluxesTableViewController.swift
+//  UsersList.swift
 //  F
 //
-//  Created by huchunbo on 15/11/1.
+//  Created by huchunbo on 15/11/6.
 //  Copyright © 2015年 TIDELAB. All rights reserved.
 //
-
-import UIKit
 import Alamofire
 import SwiftyJSON
-import KeychainAccess
+import UIKit
 
-class FluxesTableViewController: UITableViewController {
+class UsersList: UITableViewController {
     
     private var _data: JSON = JSON([])
-    
-    let keychain = Keychain(service: "com.bijiabo")
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        _getUsersList()
         
-        _setupViews()
-        _getData()
-        
-        let bijiabo = User(id: 100, name: "bijiabo", email: "bijiabo@gmail.com", valid: true)
-        FHelper.current_user = bijiabo
-        print(FHelper.current_user.name)
-        
+        __title("Users")
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -54,10 +46,9 @@ class FluxesTableViewController: UITableViewController {
 
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("fluxes", forIndexPath: indexPath) as! FluxesTableViewCell
+        let cell = UITableViewCell() //tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
 
-        cell.textLabel?.text = _data[indexPath.row]["content"].string
-        cell.id = _data[indexPath.row]["id"].stringValue
+        cell.textLabel?.text = _data[indexPath.row]["name"].string
 
         return cell
     }
@@ -98,58 +89,20 @@ class FluxesTableViewController: UITableViewController {
     }
     */
 
-
+    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
-        guard let segueID = segue.identifier else {return}
-        
-        switch segueID {
-        case "toDetail":
-            guard let cell = sender as? FluxesTableViewCell else {break}
-            guard let id = cell.id else {break}
-            guard let vc = segue.destinationViewController as? Flux else {break}
-            vc.id = id
-            
-        default:
-            break
-        }
-        
     }
+    */
 
-    
     // MARK:
-    // MARK: - View Functions
-    private func _setupViews () {
-        __title("Fluxes")
-        
-        tabBarController?.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Log in", style: UIBarButtonItemStyle.Done ,target: self, action: Selector("showLoginView:"))
-        
-        FTool.UI.setupNavigationBarStyle(navigationController: navigationController)
-    }
-    
-    func showLoginView (sender: UIBarButtonItem) {
-        let vc = storyboard!.instantiateViewControllerWithIdentifier("LoginAndRegister")
-        presentViewController(vc, animated: true, completion: nil)
-    }
-    
-    func refreshData (sender: UIBarButtonItem) {
-        //_getData()
-        
-        print(FTool.Device.ID())
-        print(hardwareDescription())
-    }
-
-    
-    // MARK:
-    // MARK: - Data Functions
-    
-    private func _getData () {
-        
-        FAction.GET(path: "fluxes", completeHandler: {
+    // MARK: - network functions
+    private func _getUsersList () {
+        FAction.GET(path: "users", completeHandler: {
             (request, response, json, error) -> Void in
             
             if error == nil {
@@ -159,23 +112,12 @@ class FluxesTableViewController: UITableViewController {
                 print(error)
             }
         })
-        
     }
     
-    private func _login () {
-        let parameters = [
-            "email": "bijiabo@gmail.com",
-            "password": "password"
-        ]
+    @IBAction func taplogoutButton(sender: AnyObject) {
+        FAction.logout()
         
-        Alamofire.request(.POST, "http://localhost:3000/request_new_token", parameters: parameters, encoding: ParameterEncoding.JSON)
-            .responseSwiftyJSON({ (request, response, json, error) in
-                print(error)
-                print(response)
-                if error == nil {
-                    print(json)
-                }
-            })
-        
+        navigationController?.popViewControllerAnimated(true)
     }
+    
 }
