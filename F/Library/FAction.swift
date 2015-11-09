@@ -139,4 +139,64 @@ class FAction: NSObject {
                 completeHandler(request: request, response: response, json: json, error: error)
             })
     }
+    
+    // MARK:
+    // MARK: 
+    class fluxes {
+        class func create(motion motion: String, content: String, completeHandler: (success: Bool, description: String)->Void) {
+            let requestURL: String = "\(Config.host)fluxes.json?token=\(FHelper.token)"
+            let parameters = [
+                "flux": [
+                    "motion": motion,
+                    "content": content,
+                    "picture": ""
+                ]
+            ]
+            
+            print(parameters)
+            print(requestURL)
+            
+            //TODO: finish viewController
+            /*
+            Alamofire.request(.POST, requestURL, parameters: parameters, encoding: ParameterEncoding.JSON)
+                .responseSwiftyJSON({ (request, response, json, error) in
+                    
+                    var success: Bool = false
+                    var description: String = String()
+                    
+                    if error == nil {
+                        success = !json["error"].boolValue
+                        if !success {
+                            description = json["description"].stringValue
+                        }
+                    } else {
+                        description = error.debugDescription
+                    }
+                    completeHandler(success: success, description: description)
+                })
+            */
+            let uploadImageURL = NSBundle.mainBundle().resourceURL!.URLByAppendingPathComponent("images/test.jpg")
+            
+            Alamofire.upload(
+                .POST,
+                requestURL,
+                multipartFormData: { multipartFormData in
+                    multipartFormData.appendBodyPart(fileURL: uploadImageURL, name: "flux[picture]")
+                    
+                    multipartFormData.appendBodyPart(data: motion.dataUsingEncoding(NSUTF8StringEncoding)!, name: "flux[motion]")
+                    multipartFormData.appendBodyPart(data: content.dataUsingEncoding(NSUTF8StringEncoding)!, name: "flux[content]")
+                },
+                encodingCompletion: { encodingResult in
+                    switch encodingResult {
+                    case .Success(let upload, _, _):
+                        upload.responseJSON { response in
+                            debugPrint(response)
+                        }
+                    case .Failure(let encodingError):
+                        print(encodingError)
+                    }
+                }
+            )
+        }
+    }
 }

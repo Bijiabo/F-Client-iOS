@@ -132,5 +132,10 @@ class Flux: UITableViewController {
             })
         }
     }
+    
+    @IBAction func newFlux(sender: AnyObject) {
+        
+    }
+    
 
 }

@@ -21,7 +21,9 @@ class FluxesTableViewController: UITableViewController {
         super.viewDidLoad()
         
         _setupViews()
-        _getData()
+        getData({
+            print("finish get data")
+        })
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -121,7 +123,11 @@ class FluxesTableViewController: UITableViewController {
     private func _setupViews () {
         __title("Fluxes")
         
-        tabBarController?.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Log in", style: UIBarButtonItemStyle.Done ,target: self, action: Selector("showLoginView:"))
+        if FHelper.logged_in {
+            tabBarController?.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "New", style: UIBarButtonItemStyle.Done, target: self, action: Selector("newFlux:"))
+        }else{
+            tabBarController?.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Log in", style: UIBarButtonItemStyle.Done ,target: self, action: Selector("showLoginView:"))
+        }
         
         FTool.UI.setupNavigationBarStyle(navigationController: navigationController)
     }
@@ -129,6 +135,11 @@ class FluxesTableViewController: UITableViewController {
     func showLoginView (sender: UIBarButtonItem) {
         let vc = storyboard!.instantiateViewControllerWithIdentifier("LoginAndRegister")
         presentViewController(vc, animated: true, completion: nil)
+    }
+    
+    func newFlux (sender: UIBarButtonItem) {
+        let vc = storyboard!.instantiateViewControllerWithIdentifier("newFlux")
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     func refreshData (sender: UIBarButtonItem) {
@@ -142,7 +153,7 @@ class FluxesTableViewController: UITableViewController {
     // MARK:
     // MARK: - Data Functions
     
-    private func _getData () {
+    func getData (completeHandler: ()->Void) {
         
         FAction.GET(path: "fluxes", completeHandler: {
             (request, response, json, error) -> Void in
@@ -153,24 +164,11 @@ class FluxesTableViewController: UITableViewController {
             }else{
                 print(error)
             }
+            
+            completeHandler()
         })
         
     }
     
-    private func _login () {
-        let parameters = [
-            "email": "bijiabo@gmail.com",
-            "password": "password"
-        ]
-        
-        Alamofire.request(.POST, "http://localhost:3000/request_new_token", parameters: parameters, encoding: ParameterEncoding.JSON)
-            .responseSwiftyJSON({ (request, response, json, error) in
-                print(error)
-                print(response)
-                if error == nil {
-                    print(json)
-                }
-            })
-        
-    }
+    
 }
