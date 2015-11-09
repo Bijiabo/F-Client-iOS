@@ -190,10 +190,10 @@
             </objects>
             <point key="canvasLocation" x="1085" y="135"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Main Tab Bar Controller-->
         <scene sceneID="PeZ-2T-PIs">
             <objects>
-                <tabBarController id="L3L-ai-aEj" sceneMemberID="viewController">
+                <tabBarController id="L3L-ai-aEj" customClass="MainTabBarController" customModule="F" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="Xph-Vi-Rhd"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="02O-7q-83k">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>

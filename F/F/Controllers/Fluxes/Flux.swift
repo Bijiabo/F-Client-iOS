@@ -20,6 +20,18 @@ class Flux: UITableViewController {
         loadData()
 
         title = "Flux Detail"
+        
+        let statusBarBackground = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 20.0))
+        statusBarBackground.backgroundColor = ViewConstants.Style.mainColor
+        view.addSubview(statusBarBackground)
+        view.sendSubviewToBack(statusBarBackground)
+        
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(true)
+        
+        navigationController?.setNavigationBarHidden(false, animated: true)
     }
 
     override func didReceiveMemoryWarning() {
@@ -107,6 +119,7 @@ class Flux: UITableViewController {
                     
                     //check if it is current user's flux
                     guard let user_id = json["user_id"].int else {return}
+                    
                     if FHelper.current_user(user_id) {
                         print("you are owner!")
                     }else{

@@ -22,11 +22,6 @@ class FluxesTableViewController: UITableViewController {
         
         _setupViews()
         _getData()
-        
-        let bijiabo = User(id: 100, name: "bijiabo", email: "bijiabo@gmail.com", valid: true)
-        FHelper.current_user = bijiabo
-        print(FHelper.current_user.name)
-        
     }
     
     override func viewWillAppear(animated: Bool) {
