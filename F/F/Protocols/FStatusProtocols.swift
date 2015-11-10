@@ -9,10 +9,9 @@
 import Foundation
 
 @objc protocol FStatusObserver: class {
-//    func addFStatusObserver(name name: String, observer: FStatusObserver)
-//    func removeFStatusObserver(observer: FStatusObserver)
 }
 
-protocol FStatus_LoginObserver: FStatusObserver {
-    
+@objc protocol FStatus_LoginObserver: FStatusObserver {
+    optional func FStatus_didLogIn ()
+    optional func FStatus_didLogOut ()
 }

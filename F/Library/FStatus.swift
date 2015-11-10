@@ -37,6 +37,7 @@ class FStatus: NSObject {
     
     func addObserver (notification: NSNotification) {
         guard let object = _convertNotificationObject(notificationObject: notification.object) else {return}
+
         if let targetObserverGroup = observers[object.name]{
             for (_,item) in targetObserverGroup.enumerate() {
                 if item === object.observer {return}
@@ -45,6 +46,7 @@ class FStatus: NSObject {
         } else {
             observers[object.name] = [object.observer]
         }
+        _afterActionForAddObservers(object)
     }
     
     func removeObserver (notification: NSNotification) {
@@ -72,11 +74,15 @@ class FStatus: NSObject {
         return nil
     }
     
-    private func _runStatementForTargetObservers(observerGroupName observerGroupName: String, statement : (observer : FStatusObserver) -> Void ) {
+    func runStatementForTargetObservers(observerGroupName observerGroupName: String, statement : (observer : FStatusObserver) -> Void ) {
         guard let targetObserverGroup = observers[observerGroupName] else {return}
         for (_,observer) in targetObserverGroup.enumerate() {
             statement(observer: observer)
         }
+    }
+    
+    private func _afterActionForAddObservers (object: (name: String, observer: FStatusObserver)) {
+        //do things after add observers each time
     }
     
     // MARK: - class functions
@@ -100,15 +106,24 @@ class FStatus: NSObject {
     
     private func _checkLoginStatus () {
         //TODO: check logged in status
-        var logged_in: Bool = true
+        var logged_in: Bool = false
         
-        let userDefaults = NSUserDefaults.standardUserDefaults()
-        userDefaults.setBool(logged_in, forKey: FConstant.UserDefaults.FStatus.logged_in)
-        userDefaults.synchronize()
-        
-        _runStatementForTargetObservers(observerGroupName: "login") { (observer) -> Void in
-            //observer as? userLoginStatusObserver
-            //observer.logged_in_status_changed()
+        FAction.checkLogin { (success, description) -> Void in
+            logged_in = success
+            
+            let userDefaults = NSUserDefaults.standardUserDefaults()
+            userDefaults.setBool(logged_in, forKey: FConstant.UserDefaults.FStatus.logged_in)
+            userDefaults.synchronize()
+            
+            self.runStatementForTargetObservers(observerGroupName: FConstant.String.FStatus.loginStatus) { (observer) -> Void in
+                if let observer = observer as? FStatus_LoginObserver {
+                    if logged_in {
+                        observer.FStatus_didLogIn?()
+                    } else {
+                        observer.FStatus_didLogOut?()
+                    }
+                }
+            }
         }
     }
     

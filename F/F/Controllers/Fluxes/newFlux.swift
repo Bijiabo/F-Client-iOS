@@ -27,12 +27,14 @@ class newFlux: UIViewController {
     
     @IBAction func tapPublishButton(sender: AnyObject) {
         let motion: String = motionTextField.text!
-        let content: String = "Hello,world!"
+        let content: String = contentTextView.text
         let images: NSData? = imageView.image != nil ? UIImageJPEGRepresentation(imageView.image!, 1.0) : nil
         
         FAction.fluxes.create(motion: motion, content: content, image: images, completeHandler: {
             (success, description) -> Void in
-            print(success)
+            if success {
+                self.navigationController?.popToRootViewControllerAnimated(true)
+            }
         })
     }
 

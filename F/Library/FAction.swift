@@ -55,6 +55,26 @@ class FAction: NSObject {
     
     // MARK:
     // MARK: actions
+    class func checkLogin (completeHandler: (success: Bool, description: String)->Void ) {
+        Alamofire.request(.GET, "\(Config.host)check_token.json?token=\(FHelper.token)", parameters: nil, encoding: ParameterEncoding.JSON)
+            .responseSwiftyJSON({ (request, response, json, error) in
+                var success: Bool = false
+                var description: String = error.debugDescription
+                if error == nil {
+                    success = json["success"].boolValue
+                    if !success {
+                        description = json["description"].stringValue
+                    } else {
+                        description = json["description"].stringValue
+                    }
+                    
+                    FHelper.current_user = User(id: json["user"]["id"].intValue , name: json["user"]["name"].stringValue, email: json["user"]["email"].stringValue, valid: true)
+                }
+                
+                completeHandler(success: success, description: description)
+            })
+    }
+    
     class func login (email: String, password: String, completeHandler: (success: Bool, description: String)->Void ) {
         
         let parameters = [
@@ -156,27 +176,6 @@ class FAction: NSObject {
             print(parameters)
             print(requestURL)
             
-            //TODO: finish viewController
-            /*
-            Alamofire.request(.POST, requestURL, parameters: parameters, encoding: ParameterEncoding.JSON)
-                .responseSwiftyJSON({ (request, response, json, error) in
-                    
-                    var success: Bool = false
-                    var description: String = String()
-                    
-                    if error == nil {
-                        success = !json["error"].boolValue
-                        if !success {
-                            description = json["description"].stringValue
-                        }
-                    } else {
-                        description = error.debugDescription
-                    }
-                    completeHandler(success: success, description: description)
-                })
-            */
-            let uploadImageURL = NSBundle.mainBundle().resourceURL!.URLByAppendingPathComponent("images/test.jpg")
-            
             Alamofire.upload(
                 .POST,
                 requestURL,
@@ -193,14 +192,21 @@ class FAction: NSObject {
                     multipartFormData.appendBodyPart(data: content.dataUsingEncoding(NSUTF8StringEncoding)!, name: "flux[content]")
                 },
                 encodingCompletion: { encodingResult in
+                    var result = (success: false, description: "")
+                    
                     switch encodingResult {
                     case .Success(let upload, _, _):
-                        upload.responseJSON { response in
-                            debugPrint(response)
-                        }
+                        upload.responseSwiftyJSON({ (request, response, json, error) in
+                            result.success = json["success"].boolValue
+                            result.description = json["description"].stringValue
+                            completeHandler(success: result.success, description: result.description)
+                        })
                     case .Failure(let encodingError):
                         print(encodingError)
+                        result.description = "upload failure."
+                        completeHandler(success: result.success, description: result.description)
                     }
+                    
                 }
             )
         }
