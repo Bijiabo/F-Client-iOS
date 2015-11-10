@@ -46,6 +46,9 @@
 		656F3B211BEBD4CF004F62C0 /* Register.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656F3B201BEBD4CF004F62C0 /* Register.swift */; };
 		656F3B231BEBEBC5004F62C0 /* extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656F3B221BEBEBC5004F62C0 /* extension.swift */; };
 		656F3B261BEC64AE004F62C0 /* UsersList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656F3B251BEC64AE004F62C0 /* UsersList.swift */; };
+		6584E6111BF22354003AB4B5 /* FStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6584E6101BF22354003AB4B5 /* FStatus.swift */; };
+		6584E6141BF2242E003AB4B5 /* FStatusProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6584E6131BF2242E003AB4B5 /* FStatusProtocols.swift */; };
+		6584E6161BF22C74003AB4B5 /* FConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6584E6151BF22C74003AB4B5 /* FConstant.swift */; };
 		65CB24C01BEE25BE009E988E /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65CB24BF1BEE25BE009E988E /* UIViewControllerExtension.swift */; };
 		65CB24C21BEE296C009E988E /* FHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65CB24C11BEE296C009E988E /* FHelper.swift */; };
 		65CB24C51BEE2DEA009E988E /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65CB24C41BEE2DEA009E988E /* User.swift */; };
@@ -118,6 +121,9 @@
 		656F3B221BEBEBC5004F62C0 /* extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = extension.swift; sourceTree = "<group>"; };
 		656F3B241BEBECB8004F62C0 /* Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
 		656F3B251BEC64AE004F62C0 /* UsersList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsersList.swift; sourceTree = "<group>"; };
+		6584E6101BF22354003AB4B5 /* FStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FStatus.swift; sourceTree = "<group>"; };
+		6584E6131BF2242E003AB4B5 /* FStatusProtocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FStatusProtocols.swift; sourceTree = "<group>"; };
+		6584E6151BF22C74003AB4B5 /* FConstant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FConstant.swift; sourceTree = "<group>"; };
 		65CB24BF1BEE25BE009E988E /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
 		65CB24C11BEE296C009E988E /* FHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FHelper.swift; sourceTree = "<group>"; };
 		65CB24C41BEE2DEA009E988E /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -192,17 +198,18 @@
 		6557A8E61BE600D900891879 /* F */ = {
 			isa = PBXGroup;
 			children = (
+				6557A8E71BE600D900891879 /* AppDelegate.swift */,
+				6557A8EB1BE600D900891879 /* Main.storyboard */,
+				6584E6121BF22375003AB4B5 /* Protocols */,
+				6540A76D1BEA545B0056D692 /* Config.swift */,
 				65CB24C31BEE2DCF009E988E /* Models */,
 				65CB24BE1BEE2594009E988E /* Extensions */,
 				6557A92F1BE6183200891879 /* Views */,
 				6557A92C1BE617DD00891879 /* Controllers */,
-				6557A8E71BE600D900891879 /* AppDelegate.swift */,
-				6557A8EB1BE600D900891879 /* Main.storyboard */,
 				6557A8F11BE600D900891879 /* Assets.xcassets */,
 				6557A8F31BE600D900891879 /* LaunchScreen.storyboard */,
 				6557A8F61BE600D900891879 /* Info.plist */,
 				6557A8EE1BE600D900891879 /* F.xcdatamodeld */,
-				6540A76D1BEA545B0056D692 /* Config.swift */,
 			);
 			path = F;
 			sourceTree = "<group>";
@@ -229,12 +236,10 @@
 			isa = PBXGroup;
 			children = (
 				6557A9251BE60F9900891879 /* Alamofire-SwiftyJSON.swift */,
-				6557A9541BE65F3900891879 /* FTool.swift */,
-				653917551BE9227100EEAD6C /* FAction.swift */,
-				65CB24C11BEE296C009E988E /* FHelper.swift */,
 				6540A76F1BEA6B870056D692 /* DeviceGuru.swift */,
 				656F3B221BEBEBC5004F62C0 /* extension.swift */,
 				656F3B241BEBECB8004F62C0 /* Bridging-Header.h */,
+				6584E60F1BF22307003AB4B5 /* F */,
 			);
 			path = Library;
 			sourceTree = "<group>";
@@ -295,6 +300,26 @@
 				656F3B251BEC64AE004F62C0 /* UsersList.swift */,
 			);
 			path = Users;
+			sourceTree = "<group>";
+		};
+		6584E60F1BF22307003AB4B5 /* F */ = {
+			isa = PBXGroup;
+			children = (
+				6557A9541BE65F3900891879 /* FTool.swift */,
+				653917551BE9227100EEAD6C /* FAction.swift */,
+				65CB24C11BEE296C009E988E /* FHelper.swift */,
+				6584E6101BF22354003AB4B5 /* FStatus.swift */,
+				6584E6151BF22C74003AB4B5 /* FConstant.swift */,
+			);
+			name = F;
+			sourceTree = "<group>";
+		};
+		6584E6121BF22375003AB4B5 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				6584E6131BF2242E003AB4B5 /* FStatusProtocols.swift */,
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 		65CB24BB1BEE24FA009E988E /* Application */ = {
@@ -499,6 +524,7 @@
 				6557A9421BE6489D00891879 /* AvatarTableViewCell.swift in Sources */,
 				656F3B261BEC64AE004F62C0 /* UsersList.swift in Sources */,
 				656F3B211BEBD4CF004F62C0 /* Register.swift in Sources */,
+				6584E6161BF22C74003AB4B5 /* FConstant.swift in Sources */,
 				65496E8D1BF12D1600117B50 /* newFlux.swift in Sources */,
 				6557A9431BE6489D00891879 /* BlockButton_TableViewCell.swift in Sources */,
 				6557A9441BE6489D00891879 /* FunctionTableViewCell.swift in Sources */,
@@ -515,6 +541,7 @@
 				6557A9491BE6489D00891879 /* TextFieldTableViewCell.swift in Sources */,
 				6557A94A1BE6489D00891879 /* TextFieldWithButton_TableViewCell.swift in Sources */,
 				65CB24C01BEE25BE009E988E /* UIViewControllerExtension.swift in Sources */,
+				6584E6141BF2242E003AB4B5 /* FStatusProtocols.swift in Sources */,
 				6557A94B1BE6489D00891879 /* TextFieldWithLabel_TableViewCell.swift in Sources */,
 				6557A94C1BE6489D00891879 /* TextFieldWithLabelFullWidth_TableViewCell.swift in Sources */,
 				6557A9321BE62E8E00891879 /* FluxesTableViewCell.swift in Sources */,
@@ -523,6 +550,7 @@
 				656F3B231BEBEBC5004F62C0 /* extension.swift in Sources */,
 				6557A9261BE60F9900891879 /* Alamofire-SwiftyJSON.swift in Sources */,
 				656F3B1F1BEBD2FD004F62C0 /* Login.swift in Sources */,
+				6584E6111BF22354003AB4B5 /* FStatus.swift in Sources */,
 				6557A8E81BE600D900891879 /* AppDelegate.swift in Sources */,
 				65FC06641BEE1CDF007D5DE6 /* Flux.swift in Sources */,
 				653917531BE915FB00EEAD6C /* PublicTableViewCell.swift in Sources */,

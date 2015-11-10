@@ -143,7 +143,7 @@ class FAction: NSObject {
     // MARK:
     // MARK: 
     class fluxes {
-        class func create(motion motion: String, content: String, completeHandler: (success: Bool, description: String)->Void) {
+        class func create(motion motion: String, content: String, image: NSData?, completeHandler: (success: Bool, description: String)->Void) {
             let requestURL: String = "\(Config.host)fluxes.json?token=\(FHelper.token)"
             let parameters = [
                 "flux": [
@@ -181,7 +181,13 @@ class FAction: NSObject {
                 .POST,
                 requestURL,
                 multipartFormData: { multipartFormData in
-                    multipartFormData.appendBodyPart(fileURL: uploadImageURL, name: "flux[picture]")
+                    if let imageData = image {
+                        multipartFormData.appendBodyPart(data: imageData, name: "flux[picture]", fileName: "xxx.jpg", mimeType: "image/jpeg")
+                    }else{
+                        multipartFormData.appendBodyPart(data: "".dataUsingEncoding(NSUTF8StringEncoding)!, name: "flux[picture]")
+                    }
+                    
+                    //multipartFormData.appendBodyPart(fileURL: uploadImageURL, name: "flux[picture]")
                     
                     multipartFormData.appendBodyPart(data: motion.dataUsingEncoding(NSUTF8StringEncoding)!, name: "flux[motion]")
                     multipartFormData.appendBodyPart(data: content.dataUsingEncoding(NSUTF8StringEncoding)!, name: "flux[content]")

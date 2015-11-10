@@ -122,13 +122,19 @@ class FluxesTableViewController: UITableViewController {
     // MARK: - View Functions
     private func _setupViews () {
         __title("Fluxes")
-        
+        //*
         if FHelper.logged_in {
             tabBarController?.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "New", style: UIBarButtonItemStyle.Done, target: self, action: Selector("newFlux:"))
         }else{
             tabBarController?.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Log in", style: UIBarButtonItemStyle.Done ,target: self, action: Selector("showLoginView:"))
         }
-        
+        //*/
+        /*
+        tabBarController?.navigationItem.rightBarButtonItems = [
+            UIBarButtonItem(title: "New", style: UIBarButtonItemStyle.Done, target: self, action: Selector("newFlux:")),
+            UIBarButtonItem(title: "Log in", style: UIBarButtonItemStyle.Done ,target: self, action: Selector("showLoginView:"))
+        ]
+        */
         FTool.UI.setupNavigationBarStyle(navigationController: navigationController)
     }
     
@@ -148,7 +154,6 @@ class FluxesTableViewController: UITableViewController {
         print(FTool.Device.ID())
         print(hardwareDescription())
     }
-
     
     // MARK:
     // MARK: - Data Functions

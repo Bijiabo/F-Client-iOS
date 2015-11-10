@@ -4,6 +4,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9525.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
     </dependencies>
     <scenes>
         <!--登陆-->
@@ -155,11 +156,18 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Title" id="6y2-zo-829">
-                        <barButtonItem key="rightBarButtonItem" title="Publish" id="LxM-QN-9X6">
-                            <connections>
-                                <action selector="tapPublishButton:" destination="5Hy-y2-VeW" id="swd-FA-Dpf"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="done" id="LxM-QN-9X6">
+                                <connections>
+                                    <action selector="tapPublishButton:" destination="5Hy-y2-VeW" id="swd-FA-Dpf"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem systemItem="camera" id="Eaq-hB-nJQ">
+                                <connections>
+                                    <action selector="tapCameraButton:" destination="5Hy-y2-VeW" id="sSg-Ct-LFy"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <outlet property="contentTextView" destination="uBD-Y1-9Hh" id="Q1J-wj-znt"/>
