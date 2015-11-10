@@ -13,11 +13,15 @@ import CoreData
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    var status: FStatus = FStatus()
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
 
         UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent
+        
+        UIApplication.sharedApplication().setMinimumBackgroundFetchInterval(UIApplicationBackgroundFetchIntervalMinimum)
+        
+        application.registerUserNotificationSettings(UIUserNotificationSettings(forTypes: [.Alert , .Badge , .Sound], categories: nil))
         
         return true
     }
@@ -44,6 +48,31 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
         // Saves changes in the application's managed object context before the application terminates.
         self.saveContext()
+    }
+    
+    func application(application: UIApplication, performFetchWithCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void) {
+        if let mainNavigationController = window?.rootViewController as? UINavigationController {
+            if let mainTabBarController = mainNavigationController.topViewController as? MainTabBarController {
+                if let controllers = mainTabBarController.viewControllers {
+                    for vc in controllers {
+                        if let fluxesVC = vc as? FluxesTableViewController {
+                            fluxesVC.getData({
+                                completionHandler(UIBackgroundFetchResult.NewData)
+                            })
+                        }
+                    }
+                }
+            }
+        }
+        
+        let notification = UILocalNotification()
+        notification.alertBody = "Background fetch run..." // text that will be displayed in the notification
+        notification.alertAction = "open" // text that is displayed after "slide to..." on the lock screen - defaults to "slide to view"
+        notification.fireDate = NSDate(timeIntervalSinceNow: 1) // todo item due date (when notification will be fired)
+        notification.soundName = UILocalNotificationDefaultSoundName // play default sound
+        notification.userInfo = ["UUID": "xxx", ] // assign a unique identifier to the notification so that we can retrieve it later
+        notification.category = "TODO_CATEGORY"
+        UIApplication.sharedApplication().scheduleLocalNotification(notification)
     }
 
     // MARK: - Core Data stack

@@ -4,6 +4,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9525.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
     </dependencies>
     <scenes>
         <!--登陆-->
@@ -127,6 +128,56 @@
             </objects>
             <point key="canvasLocation" x="264" y="1498"/>
         </scene>
+        <!--Title-->
+        <scene sceneID="7vA-6s-JBP">
+            <objects>
+                <viewController storyboardIdentifier="newFlux" id="5Hy-y2-VeW" customClass="newFlux" customModule="F" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="pRH-Wj-D4Q"/>
+                        <viewControllerLayoutGuide type="bottom" id="pwH-nv-tPy"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Pbq-QM-FNx">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="motion" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1ud-ge-sdb">
+                                <rect key="frame" x="20" y="82" width="397" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="uBD-Y1-9Hh">
+                                <rect key="frame" x="20" y="129" width="397" height="128"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Title" id="6y2-zo-829">
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="done" id="LxM-QN-9X6">
+                                <connections>
+                                    <action selector="tapPublishButton:" destination="5Hy-y2-VeW" id="swd-FA-Dpf"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem systemItem="camera" id="Eaq-hB-nJQ">
+                                <connections>
+                                    <action selector="tapCameraButton:" destination="5Hy-y2-VeW" id="sSg-Ct-LFy"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="contentTextView" destination="uBD-Y1-9Hh" id="Q1J-wj-znt"/>
+                        <outlet property="motionTextField" destination="1ud-ge-sdb" id="jSV-Rc-fFp"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Hki-51-Wqa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1477" y="-270"/>
+        </scene>
         <!--Root View Controller-->
         <scene sceneID="WkN-uR-cDN">
             <objects>
@@ -156,13 +207,18 @@
                     <tabBarItem key="tabBarItem" title="Fluxes" id="FlV-uE-WQL"/>
                     <navigationItem key="navigationItem" title="Root View Controller" id="2dI-oR-LEi">
                         <barButtonItem key="leftBarButtonItem" title="Item" systemItem="refresh" id="7gX-CI-jce"/>
+                        <barButtonItem key="rightBarButtonItem" title="New" id="zz6-jE-yjT">
+                            <connections>
+                                <segue destination="5Hy-y2-VeW" kind="show" id="L1n-uI-s01"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gnz-5P-ITd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="264" y="135"/>
         </scene>
-        <!--Flux-->
+        <!--Title-->
         <scene sceneID="wZE-V0-dE3">
             <objects>
                 <tableViewController id="q00-5U-cRq" customClass="Flux" customModule="F" customModuleProvider="target" sceneMemberID="viewController">
@@ -185,10 +241,17 @@
                             <outlet property="delegate" destination="q00-5U-cRq" id="Y8q-kn-gzS"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" title="Title" id="1IM-Ks-k5s">
+                        <barButtonItem key="rightBarButtonItem" title="new" id="KwN-Eh-ra6">
+                            <connections>
+                                <action selector="newFlux:" destination="q00-5U-cRq" id="SU8-oI-zjT"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Oe-HG-ODB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1085" y="135"/>
+            <point key="canvasLocation" x="1477" y="415"/>
         </scene>
         <!--Main Tab Bar Controller-->
         <scene sceneID="PeZ-2T-PIs">
