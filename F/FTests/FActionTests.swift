@@ -53,4 +53,22 @@ class FActionTests: XCTestCase {
         }
     }
     
+    func testCreateFlux() {
+        let content = "Hello,world."
+        FAction.fluxes.create(motion: "share_test", content: content, image: nil) { (success, description) -> Void in
+            assert(success)
+            FAction.GET(path: "fluxes", completeHandler: { (request, response, json, error) -> Void in
+                let newFlux = json[0]
+                assert(newFlux["content"].stringValue == content, "correct content")
+                assert(newFlux["motion"].stringValue == "share_test", "correct motion.")
+            })
+        }
+    }
+    
+    func testDeleteFlux() {
+        //TODO: 
+        //create new flux
+        //delete last flux
+    }
+    
 }
