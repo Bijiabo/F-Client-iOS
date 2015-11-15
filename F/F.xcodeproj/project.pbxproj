@@ -52,6 +52,48 @@
 		65A59F001BF26BFE0076DCCE /* Localizable_CN.strings in Resources */ = {isa = PBXBuildFile; fileRef = 65A59F021BF26BFE0076DCCE /* Localizable_CN.strings */; };
 		65A59F071BF26C5E0076DCCE /* Localizable_EN.strings in Resources */ = {isa = PBXBuildFile; fileRef = 65A59F091BF26C5E0076DCCE /* Localizable_EN.strings */; };
 		65A59F6D1BF909510076DCCE /* FNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A59F6C1BF909510076DCCE /* FNetwork.swift */; };
+		65A59F6F1BF914600076DCCE /* FActionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A59F6E1BF914600076DCCE /* FActionTests.swift */; };
+		65A59F701BF914770076DCCE /* FTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6557A9541BE65F3900891879 /* FTool.swift */; };
+		65A59F711BF9147B0076DCCE /* FAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653917551BE9227100EEAD6C /* FAction.swift */; };
+		65A59F721BF9147E0076DCCE /* FHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65CB24C11BEE296C009E988E /* FHelper.swift */; };
+		65A59F731BF914810076DCCE /* FStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6584E6101BF22354003AB4B5 /* FStatus.swift */; };
+		65A59F741BF914870076DCCE /* FConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6584E6151BF22C74003AB4B5 /* FConstant.swift */; };
+		65A59F751BF9148A0076DCCE /* FNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A59F6C1BF909510076DCCE /* FNetwork.swift */; };
+		65A59F761BF914AB0076DCCE /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6557A9291BE611FF00891879 /* Alamofire.framework */; };
+		65A59F771BF914AB0076DCCE /* KeychainAccess.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6508CB231BE8C9D6002AEC36 /* KeychainAccess.framework */; };
+		65A59F781BF914AB0076DCCE /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6557A9271BE6107100891879 /* SwiftyJSON.framework */; };
+		65A59F7A1BF915420076DCCE /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65CB24C41BEE2DEA009E988E /* User.swift */; };
+		65A59F7B1BF915460076DCCE /* FStatusProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6584E6131BF2242E003AB4B5 /* FStatusProtocols.swift */; };
+		65A59F7C1BF9155C0076DCCE /* PublicTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6557A94E1BE648E200891879 /* PublicTableViewController.swift */; };
+		65A59F7D1BF915650076DCCE /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6540A76D1BEA545B0056D692 /* Config.swift */; };
+		65A59F7E1BF9157A0076DCCE /* ViewConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6557A9501BE6492900891879 /* ViewConstants.swift */; };
+		65A59F801BF915CE0076DCCE /* DeviceGuru.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6540A76F1BEA6B870056D692 /* DeviceGuru.swift */; };
+		65A59F821BF915CE0076DCCE /* Bridging-Header.h in Sources */ = {isa = PBXBuildFile; fileRef = 656F3B241BEBECB8004F62C0 /* Bridging-Header.h */; };
+		65A59F831BF915D50076DCCE /* TextFieldTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6557A93D1BE6489D00891879 /* TextFieldTableViewCell.swift */; };
+		65A59F841BF915D50076DCCE /* PublicTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653917521BE915FB00EEAD6C /* PublicTableViewCell.swift */; };
+		65A59F851BF915D50076DCCE /* Annotation_TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6557A9351BE6489D00891879 /* Annotation_TableViewCell.swift */; };
+		65A59F861BF915D50076DCCE /* AvatarTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6557A9361BE6489D00891879 /* AvatarTableViewCell.swift */; };
+		65A59F871BF915D50076DCCE /* BlockButton_TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6557A9371BE6489D00891879 /* BlockButton_TableViewCell.swift */; };
+		65A59F881BF915D50076DCCE /* FunctionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6557A9381BE6489D00891879 /* FunctionTableViewCell.swift */; };
+		65A59F891BF915D50076DCCE /* Indicator_TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6557A9391BE6489D00891879 /* Indicator_TableViewCell.swift */; };
+		65A59F8A1BF915D50076DCCE /* PasswordField_TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6557A93A1BE6489D00891879 /* PasswordField_TableViewCell.swift */; };
+		65A59F8B1BF915D50076DCCE /* PasswordFieldWithLabel_TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6557A93B1BE6489D00891879 /* PasswordFieldWithLabel_TableViewCell.swift */; };
+		65A59F8C1BF915D50076DCCE /* TextField_TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6557A93C1BE6489D00891879 /* TextField_TableViewCell.swift */; };
+		65A59F8D1BF915D50076DCCE /* TextFieldWithButton_TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6557A93E1BE6489D00891879 /* TextFieldWithButton_TableViewCell.swift */; };
+		65A59F8E1BF915D50076DCCE /* TextFieldWithLabel_TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6557A93F1BE6489D00891879 /* TextFieldWithLabel_TableViewCell.swift */; };
+		65A59F8F1BF915D50076DCCE /* TextFieldWithLabelFullWidth_TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6557A9401BE6489D00891879 /* TextFieldWithLabelFullWidth_TableViewCell.swift */; };
+		65A59F901BF915EC0076DCCE /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65CB24BF1BEE25BE009E988E /* UIViewControllerExtension.swift */; };
+		65A59F911BF915EC0076DCCE /* FluxesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6557A9311BE62E8E00891879 /* FluxesTableViewCell.swift */; };
+		65A59F921BF915EC0076DCCE /* FluxCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65FC06651BEE1F1F007D5DE6 /* FluxCell.swift */; };
+		65A59F931BF915EC0076DCCE /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65CB24C61BEE42C3009E988E /* MainTabBarController.swift */; };
+		65A59F941BF915EC0076DCCE /* FluxesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6557A92D1BE6181500891879 /* FluxesTableViewController.swift */; };
+		65A59F951BF915EC0076DCCE /* Flux.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65FC06631BEE1CDF007D5DE6 /* Flux.swift */; };
+		65A59F961BF915EC0076DCCE /* newFlux.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65496E8C1BF12D1600117B50 /* newFlux.swift */; };
+		65A59F971BF915EC0076DCCE /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656F3B1E1BEBD2FD004F62C0 /* Login.swift */; };
+		65A59F981BF915EC0076DCCE /* Register.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656F3B201BEBD4CF004F62C0 /* Register.swift */; };
+		65A59F991BF915EC0076DCCE /* UsersList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656F3B251BEC64AE004F62C0 /* UsersList.swift */; };
+		65A59F9B1BF91A0C0076DCCE /* Alamofire-SwiftyJSON.h in Sources */ = {isa = PBXBuildFile; fileRef = 65A59F9A1BF919ED0076DCCE /* Alamofire-SwiftyJSON.h */; };
+		65A59F9C1BF91A120076DCCE /* Alamofire-SwiftyJSON.h in Sources */ = {isa = PBXBuildFile; fileRef = 65A59F9A1BF919ED0076DCCE /* Alamofire-SwiftyJSON.h */; };
 		65CB24C01BEE25BE009E988E /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65CB24BF1BEE25BE009E988E /* UIViewControllerExtension.swift */; };
 		65CB24C21BEE296C009E988E /* FHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65CB24C11BEE296C009E988E /* FHelper.swift */; };
 		65CB24C51BEE2DEA009E988E /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65CB24C41BEE2DEA009E988E /* User.swift */; };
@@ -134,6 +176,8 @@
 		65A59F011BF26BFE0076DCCE /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable_CN.strings"; sourceTree = "<group>"; };
 		65A59F081BF26C5E0076DCCE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable_EN.strings; sourceTree = "<group>"; };
 		65A59F6C1BF909510076DCCE /* FNetwork.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FNetwork.swift; sourceTree = "<group>"; };
+		65A59F6E1BF914600076DCCE /* FActionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FActionTests.swift; sourceTree = "<group>"; };
+		65A59F9A1BF919ED0076DCCE /* Alamofire-SwiftyJSON.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Alamofire-SwiftyJSON.h"; sourceTree = "<group>"; };
 		65CB24BF1BEE25BE009E988E /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
 		65CB24C11BEE296C009E988E /* FHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FHelper.swift; sourceTree = "<group>"; };
 		65CB24C41BEE2DEA009E988E /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -157,6 +201,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				65A59F761BF914AB0076DCCE /* Alamofire.framework in Frameworks */,
+				65A59F771BF914AB0076DCCE /* KeychainAccess.framework in Frameworks */,
+				65A59F781BF914AB0076DCCE /* SwiftyJSON.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -208,10 +255,10 @@
 		6557A8E61BE600D900891879 /* F */ = {
 			isa = PBXGroup;
 			children = (
+				6540A76D1BEA545B0056D692 /* Config.swift */,
 				6557A8E71BE600D900891879 /* AppDelegate.swift */,
 				6557A8EB1BE600D900891879 /* Main.storyboard */,
 				6584E6121BF22375003AB4B5 /* Protocols */,
-				6540A76D1BEA545B0056D692 /* Config.swift */,
 				65CB24C31BEE2DCF009E988E /* Models */,
 				65CB24BE1BEE2594009E988E /* Extensions */,
 				6557A92F1BE6183200891879 /* Views */,
@@ -231,6 +278,7 @@
 			children = (
 				6557A8FF1BE600D900891879 /* FTests.swift */,
 				6557A9011BE600D900891879 /* Info.plist */,
+				65A59F6E1BF914600076DCCE /* FActionTests.swift */,
 			);
 			path = FTests;
 			sourceTree = "<group>";
@@ -252,6 +300,7 @@
 				656F3B221BEBEBC5004F62C0 /* extension.swift */,
 				656F3B241BEBECB8004F62C0 /* Bridging-Header.h */,
 				6584E60F1BF22307003AB4B5 /* F */,
+				65A59F9A1BF919ED0076DCCE /* Alamofire-SwiftyJSON.h */,
 			);
 			path = Library;
 			sourceTree = "<group>";
@@ -398,6 +447,7 @@
 				6557A8F71BE600D900891879 /* Sources */,
 				6557A8F81BE600D900891879 /* Frameworks */,
 				6557A8F91BE600D900891879 /* Resources */,
+				65A59F791BF914BA0076DCCE /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -525,6 +575,22 @@
 			shellPath = /bin/sh;
 			shellScript = "/usr/local/bin/carthage copy-frameworks";
 		};
+		65A59F791BF914BA0076DCCE /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/SwiftyJSON.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/KeychainAccess.framework",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -532,6 +598,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				65A59F9C1BF91A120076DCCE /* Alamofire-SwiftyJSON.h in Sources */,
 				6557A9511BE6492900891879 /* ViewConstants.swift in Sources */,
 				6557A94F1BE648E200891879 /* PublicTableViewController.swift in Sources */,
 				6557A9411BE6489D00891879 /* Annotation_TableViewCell.swift in Sources */,
@@ -578,7 +645,45 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				65A59F9B1BF91A0C0076DCCE /* Alamofire-SwiftyJSON.h in Sources */,
+				65A59F901BF915EC0076DCCE /* UIViewControllerExtension.swift in Sources */,
+				65A59F911BF915EC0076DCCE /* FluxesTableViewCell.swift in Sources */,
+				65A59F921BF915EC0076DCCE /* FluxCell.swift in Sources */,
+				65A59F931BF915EC0076DCCE /* MainTabBarController.swift in Sources */,
+				65A59F941BF915EC0076DCCE /* FluxesTableViewController.swift in Sources */,
+				65A59F951BF915EC0076DCCE /* Flux.swift in Sources */,
+				65A59F961BF915EC0076DCCE /* newFlux.swift in Sources */,
+				65A59F971BF915EC0076DCCE /* Login.swift in Sources */,
+				65A59F981BF915EC0076DCCE /* Register.swift in Sources */,
+				65A59F991BF915EC0076DCCE /* UsersList.swift in Sources */,
+				65A59F831BF915D50076DCCE /* TextFieldTableViewCell.swift in Sources */,
+				65A59F841BF915D50076DCCE /* PublicTableViewCell.swift in Sources */,
+				65A59F851BF915D50076DCCE /* Annotation_TableViewCell.swift in Sources */,
+				65A59F861BF915D50076DCCE /* AvatarTableViewCell.swift in Sources */,
+				65A59F871BF915D50076DCCE /* BlockButton_TableViewCell.swift in Sources */,
+				65A59F881BF915D50076DCCE /* FunctionTableViewCell.swift in Sources */,
+				65A59F891BF915D50076DCCE /* Indicator_TableViewCell.swift in Sources */,
+				65A59F8A1BF915D50076DCCE /* PasswordField_TableViewCell.swift in Sources */,
+				65A59F8B1BF915D50076DCCE /* PasswordFieldWithLabel_TableViewCell.swift in Sources */,
+				65A59F8C1BF915D50076DCCE /* TextField_TableViewCell.swift in Sources */,
+				65A59F8D1BF915D50076DCCE /* TextFieldWithButton_TableViewCell.swift in Sources */,
+				65A59F8E1BF915D50076DCCE /* TextFieldWithLabel_TableViewCell.swift in Sources */,
+				65A59F8F1BF915D50076DCCE /* TextFieldWithLabelFullWidth_TableViewCell.swift in Sources */,
+				65A59F801BF915CE0076DCCE /* DeviceGuru.swift in Sources */,
+				65A59F821BF915CE0076DCCE /* Bridging-Header.h in Sources */,
+				65A59F731BF914810076DCCE /* FStatus.swift in Sources */,
+				65A59F751BF9148A0076DCCE /* FNetwork.swift in Sources */,
+				65A59F711BF9147B0076DCCE /* FAction.swift in Sources */,
+				65A59F7C1BF9155C0076DCCE /* PublicTableViewController.swift in Sources */,
+				65A59F6F1BF914600076DCCE /* FActionTests.swift in Sources */,
+				65A59F7D1BF915650076DCCE /* Config.swift in Sources */,
+				65A59F7E1BF9157A0076DCCE /* ViewConstants.swift in Sources */,
+				65A59F721BF9147E0076DCCE /* FHelper.swift in Sources */,
+				65A59F7A1BF915420076DCCE /* User.swift in Sources */,
 				6557A9001BE600D900891879 /* FTests.swift in Sources */,
+				65A59F701BF914770076DCCE /* FTool.swift in Sources */,
+				65A59F7B1BF915460076DCCE /* FStatusProtocols.swift in Sources */,
+				65A59F741BF914870076DCCE /* FConstant.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -772,6 +877,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = FTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.bijiabo.FTests;
@@ -784,6 +893,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = FTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.bijiabo.FTests;
