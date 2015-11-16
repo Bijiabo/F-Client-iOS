@@ -1,0 +1,114 @@
+
+/* Class = "UILabel"; text = "annotation"; ObjectID = "0Ka-6E-inf"; */
+"0Ka-6E-inf.text" = "annotation";
+
+/* Class = "UINavigationItem"; title = "Title"; ObjectID = "1IM-Ks-k5s"; */
+"1IM-Ks-k5s.title" = "Title";
+
+/* Class = "UITextField"; placeholder = "placeHolder"; ObjectID = "1th-fZ-h6d"; */
+"1th-fZ-h6d.placeholder" = "placeHolder";
+
+/* Class = "UITextField"; placeholder = "motion"; ObjectID = "1ud-ge-sdb"; */
+"1ud-ge-sdb.placeholder" = "motion";
+
+/* Class = "UINavigationItem"; title = "Root View Controller"; ObjectID = "2dI-oR-LEi"; */
+"2dI-oR-LEi.title" = "Root View Controller";
+
+/* Class = "UINavigationItem"; title = "Title"; ObjectID = "6y2-zo-829"; */
+"6y2-zo-829.title" = "Title";
+
+/* Class = "UIBarButtonItem"; title = "Item"; ObjectID = "7gX-CI-jce"; */
+"7gX-CI-jce.title" = "Item";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "ASM-Bc-LCT"; */
+"ASM-Bc-LCT.text" = "Label";
+
+/* Class = "UINavigationItem"; title = "登陆"; ObjectID = "BcL-QZ-B3X"; */
+"BcL-QZ-B3X.title" = "登陆";
+
+/* Class = "UITextField"; placeholder = "placeHolder"; ObjectID = "DbM-Kj-yBb"; */
+"DbM-Kj-yBb.placeholder" = "placeHolder";
+
+/* Class = "UILabel"; text = "text"; ObjectID = "E0D-kg-9oi"; */
+"E0D-kg-9oi.text" = "text";
+
+/* Class = "UITextField"; placeholder = "email"; ObjectID = "ErC-Nd-h0W"; */
+"ErC-Nd-h0W.placeholder" = "email";
+
+/* Class = "UITabBarItem"; title = "Fluxes"; ObjectID = "FlV-uE-WQL"; */
+"FlV-uE-WQL.title" = "流";
+
+/* Class = "UITabBarItem"; title = "Item"; ObjectID = "Flr-cG-AlV"; */
+"Flr-cG-AlV.title" = "Item";
+
+/* Class = "UILabel"; text = "password"; ObjectID = "GsC-nR-5EG"; */
+"GsC-nR-5EG.text" = "password";
+
+/* Class = "UILabel"; text = "xxx"; ObjectID = "HYQ-Vs-lcB"; */
+"HYQ-Vs-lcB.text" = "xxx";
+
+/* Class = "UIBarButtonItem"; title = "new"; ObjectID = "KwN-Eh-ra6"; */
+"KwN-Eh-ra6.title" = "new";
+
+/* Class = "UITextField"; placeholder = "password"; ObjectID = "QmG-xz-hYE"; */
+"QmG-xz-hYE.placeholder" = "password";
+
+/* Class = "UIBarButtonItem"; title = "logout"; ObjectID = "SVg-qQ-3Lk"; */
+"SVg-qQ-3Lk.title" = "logout";
+
+/* Class = "UITextField"; placeholder = "name"; ObjectID = "TvE-SW-3dX"; */
+"TvE-SW-3dX.placeholder" = "name";
+
+/* Class = "UITextField"; placeholder = "placeHolder"; ObjectID = "Uk0-41-dUq"; */
+"Uk0-41-dUq.placeholder" = "placeHolder";
+
+/* Class = "UIBarButtonItem"; title = "关闭"; ObjectID = "VvO-bS-flb"; */
+"VvO-bS-flb.title" = "关闭";
+
+/* Class = "UIButton"; normalTitle = "Block Button"; ObjectID = "W5h-Bd-Kfk"; */
+"W5h-Bd-Kfk.normalTitle" = "Block Button";
+
+/* Class = "UITabBarItem"; title = "Settings"; ObjectID = "WGu-dy-h6f"; */
+"WGu-dy-h6f.title" = "设置";
+
+/* Class = "UINavigationItem"; title = "注册"; ObjectID = "XFD-tM-oAK"; */
+"XFD-tM-oAK.title" = "注册";
+
+/* Class = "UITextField"; placeholder = "password"; ObjectID = "bE8-Mr-eeb"; */
+"bE8-Mr-eeb.placeholder" = "password";
+
+/* Class = "UIBarButtonItem"; title = "注册"; ObjectID = "dDt-K9-gAT"; */
+"dDt-K9-gAT.title" = "注册";
+
+/* Class = "UITextField"; placeholder = "xxx"; ObjectID = "eYp-Yj-Lln"; */
+"eYp-Yj-Lln.placeholder" = "xxx";
+
+/* Class = "UITabBarItem"; title = "Users"; ObjectID = "gP7-6Z-F5o"; */
+"gP7-6Z-F5o.title" = "用户";
+
+/* Class = "UITextField"; placeholder = "email"; ObjectID = "icU-re-60l"; */
+"icU-re-60l.placeholder" = "email";
+
+/* Class = "UITextField"; placeholder = "placeHolder"; ObjectID = "kJs-f0-jCe"; */
+"kJs-f0-jCe.placeholder" = "placeHolder";
+
+/* Class = "UINavigationItem"; title = "用户列表"; ObjectID = "lTB-kP-kC9"; */
+"lTB-kP-kC9.title" = "用户列表";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "rnC-UU-uwS"; */
+"rnC-UU-uwS.normalTitle" = "Button";
+
+/* Class = "UIButton"; normalTitle = "Register"; ObjectID = "x3E-5S-PNq"; */
+"x3E-5S-PNq.normalTitle" = "Register";
+
+/* Class = "UITextField"; placeholder = "xxx"; ObjectID = "xYz-ah-EGw"; */
+"xYz-ah-EGw.placeholder" = "xxx";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "ydv-SK-afa"; */
+"ydv-SK-afa.text" = "Label";
+
+/* Class = "UIButton"; normalTitle = "Log in"; ObjectID = "zjl-Nw-lab"; */
+"zjl-Nw-lab.normalTitle" = "Log in";
+
+/* Class = "UIBarButtonItem"; title = "New"; ObjectID = "zz6-jE-yjT"; */
+"zz6-jE-yjT.title" = "新建";

@@ -21,15 +21,20 @@ class FluxesTableViewController: UITableViewController {
         super.viewDidLoad()
         
         _setupViews()
-        getData({
-            print("finish get data")
-        })
+        getData()
+        
+        FStatus.addFStatusObserver(name: FConstant.String.FStatus.loginStatus, observer: self)
+    }
+    
+    deinit {
+        FStatus.removeFStatusObserver(name: FConstant.String.FStatus.loginStatus, observer: self)
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(true)
         
         __refreshTitle()
+        getData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -158,7 +163,7 @@ class FluxesTableViewController: UITableViewController {
     // MARK:
     // MARK: - Data Functions
     
-    func getData (completeHandler: ()->Void) {
+    func getData (completeHandler: (()->Void)? = nil) {
         
         FAction.GET(path: "fluxes", completeHandler: {
             (request, response, json, error) -> Void in
@@ -170,10 +175,18 @@ class FluxesTableViewController: UITableViewController {
                 print(error)
             }
             
-            completeHandler()
+            completeHandler?()
         })
         
     }
+}
+
+extension FluxesTableViewController: FStatus_LoginObserver {
+    func FStatus_didLogIn() {
+        tabBarController?.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "New", style: UIBarButtonItemStyle.Done, target: self, action: Selector("newFlux:"))
+    }
     
-    
+    func FStatus_didLogOut() {
+        tabBarController?.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Log in", style: UIBarButtonItemStyle.Done ,target: self, action: Selector("showLoginView:"))
+    }
 }

@@ -23,4 +23,10 @@ struct FConstant {
             static let logged_in = "logged_in"
         }
     }
+    
+    struct String {
+        struct FStatus {
+            static let loginStatus = "_loginStatus"
+        }
+    }
 }

@@ -59,13 +59,7 @@ struct FHelper {
     // MARK: - user functions
     
     static var logged_in: Bool {
-        if
-        let token = try? FTool.keychain.defaultKeychain().getString("token"),
-        let tokenID = try? FTool.keychain.defaultKeychain().getString("tokenID")
-        {
-            if token != nil && tokenID != nil {return true}
-        }
-        return false
+        return NSUserDefaults.standardUserDefaults().boolForKey(FConstant.UserDefaults.FStatus.logged_in)
     }
     
     static func current_user (user_id: Int) -> Bool {

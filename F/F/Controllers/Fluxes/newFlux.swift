@@ -27,12 +27,14 @@ class newFlux: UIViewController {
     
     @IBAction func tapPublishButton(sender: AnyObject) {
         let motion: String = motionTextField.text!
-        let content: String = "Hello,world!"
+        let content: String = contentTextView.text
         let images: NSData? = imageView.image != nil ? UIImageJPEGRepresentation(imageView.image!, 1.0) : nil
         
         FAction.fluxes.create(motion: motion, content: content, image: images, completeHandler: {
             (success, description) -> Void in
-            print(success)
+            if success {
+                self.navigationController?.popToRootViewControllerAnimated(true)
+            }
         })
     }
 
@@ -50,10 +52,30 @@ extension newFlux: UINavigationControllerDelegate {
 }
 
 extension newFlux: UIImagePickerControllerDelegate {
+    
+    func rotateImage(image: UIImage) -> UIImage {
+        
+        if (image.imageOrientation == UIImageOrientation.Up ) {
+            return image
+        }
+        
+        UIGraphicsBeginImageContext(image.size)
+        
+        image.drawInRect(CGRect(origin: CGPoint.zero, size: image.size))
+        let copy = UIGraphicsGetImageFromCurrentImageContext()
+        
+        UIGraphicsEndImageContext()
+        
+        return copy
+    }
+    
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]){
         self.dismissViewControllerAnimated(true, completion: nil)
         print(info, terminator: "")
-        self.imageView.image = info[UIImagePickerControllerOriginalImage] as? UIImage
+        if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
+            self.imageView.image = rotateImage(image)
+        }
+        
 
     }
 
