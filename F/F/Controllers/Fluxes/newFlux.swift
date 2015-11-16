@@ -52,10 +52,30 @@ extension newFlux: UINavigationControllerDelegate {
 }
 
 extension newFlux: UIImagePickerControllerDelegate {
+    
+    func rotateImage(image: UIImage) -> UIImage {
+        
+        if (image.imageOrientation == UIImageOrientation.Up ) {
+            return image
+        }
+        
+        UIGraphicsBeginImageContext(image.size)
+        
+        image.drawInRect(CGRect(origin: CGPoint.zero, size: image.size))
+        let copy = UIGraphicsGetImageFromCurrentImageContext()
+        
+        UIGraphicsEndImageContext()
+        
+        return copy
+    }
+    
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]){
         self.dismissViewControllerAnimated(true, completion: nil)
         print(info, terminator: "")
-        self.imageView.image = info[UIImagePickerControllerOriginalImage] as? UIImage
+        if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
+            self.imageView.image = rotateImage(image)
+        }
+        
 
     }
 
