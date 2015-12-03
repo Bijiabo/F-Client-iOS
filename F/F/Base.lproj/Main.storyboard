@@ -234,6 +234,39 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="fluxImageCell" rowHeight="179" id="RMj-Q0-9Xk" customClass="FluxImageCell" customModule="F" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="136" width="600" height="179"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="RMj-Q0-9Xk" id="fkP-Fe-0m0">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="178.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ch7-TR-acB">
+                                            <rect key="frame" x="8" y="8" width="584" height="20.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="BJW-S2-FTP">
+                                            <rect key="frame" x="8" y="28" width="584" height="142"/>
+                                        </imageView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="Ch7-TR-acB" firstAttribute="trailing" secondItem="fkP-Fe-0m0" secondAttribute="trailingMargin" id="2cU-BE-9uO"/>
+                                        <constraint firstItem="BJW-S2-FTP" firstAttribute="leading" secondItem="fkP-Fe-0m0" secondAttribute="leadingMargin" id="4HZ-F9-5yn"/>
+                                        <constraint firstItem="Ch7-TR-acB" firstAttribute="leading" secondItem="fkP-Fe-0m0" secondAttribute="leadingMargin" id="9a4-Cw-dpf"/>
+                                        <constraint firstItem="Ch7-TR-acB" firstAttribute="top" secondItem="fkP-Fe-0m0" secondAttribute="topMargin" id="JI3-WF-c9K"/>
+                                        <constraint firstItem="BJW-S2-FTP" firstAttribute="top" secondItem="Ch7-TR-acB" secondAttribute="bottom" id="WIH-lQ-nmN"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="BJW-S2-FTP" secondAttribute="bottom" id="XUG-LS-Bev"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="BJW-S2-FTP" secondAttribute="trailing" id="dxP-28-T86"/>
+                                        <constraint firstItem="BJW-S2-FTP" firstAttribute="top" secondItem="Ch7-TR-acB" secondAttribute="bottom" id="glc-XH-jTi"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="image_view" destination="BJW-S2-FTP" id="T55-ae-9hd"/>
+                                    <outlet property="label" destination="Ch7-TR-acB" id="2Hs-p8-s59"/>
+                                </connections>
+                            </tableViewCell>
                         </prototypes>
                         <connections>
                             <outlet property="dataSource" destination="q00-5U-cRq" id="g0v-JQ-DP8"/>

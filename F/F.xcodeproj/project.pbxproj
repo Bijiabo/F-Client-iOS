@@ -94,12 +94,14 @@
 		65A59F991BF915EC0076DCCE /* UsersList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656F3B251BEC64AE004F62C0 /* UsersList.swift */; };
 		65A59F9B1BF91A0C0076DCCE /* Alamofire-SwiftyJSON.h in Sources */ = {isa = PBXBuildFile; fileRef = 65A59F9A1BF919ED0076DCCE /* Alamofire-SwiftyJSON.h */; };
 		65A59F9C1BF91A120076DCCE /* Alamofire-SwiftyJSON.h in Sources */ = {isa = PBXBuildFile; fileRef = 65A59F9A1BF919ED0076DCCE /* Alamofire-SwiftyJSON.h */; };
+		65BFDBDC1C108F3D00DDFED4 /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65BFDBDB1C108F3D00DDFED4 /* Kingfisher.framework */; };
 		65CB24C01BEE25BE009E988E /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65CB24BF1BEE25BE009E988E /* UIViewControllerExtension.swift */; };
 		65CB24C21BEE296C009E988E /* FHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65CB24C11BEE296C009E988E /* FHelper.swift */; };
 		65CB24C51BEE2DEA009E988E /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65CB24C41BEE2DEA009E988E /* User.swift */; };
 		65CB24C71BEE42C3009E988E /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65CB24C61BEE42C3009E988E /* MainTabBarController.swift */; };
 		65FC06641BEE1CDF007D5DE6 /* Flux.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65FC06631BEE1CDF007D5DE6 /* Flux.swift */; };
 		65FC06661BEE1F1F007D5DE6 /* FluxCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65FC06651BEE1F1F007D5DE6 /* FluxCell.swift */; };
+		F9379831A37FC816D8E34347 /* FluxImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F93798F6892B08E0DC0C0576 /* FluxImageCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -178,12 +180,14 @@
 		65A59F6C1BF909510076DCCE /* FNetwork.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FNetwork.swift; sourceTree = "<group>"; };
 		65A59F6E1BF914600076DCCE /* FActionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FActionTests.swift; sourceTree = "<group>"; };
 		65A59F9A1BF919ED0076DCCE /* Alamofire-SwiftyJSON.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Alamofire-SwiftyJSON.h"; sourceTree = "<group>"; };
+		65BFDBDB1C108F3D00DDFED4 /* Kingfisher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kingfisher.framework; path = Carthage/Build/iOS/Kingfisher.framework; sourceTree = "<group>"; };
 		65CB24BF1BEE25BE009E988E /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
 		65CB24C11BEE296C009E988E /* FHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FHelper.swift; sourceTree = "<group>"; };
 		65CB24C41BEE2DEA009E988E /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		65CB24C61BEE42C3009E988E /* MainTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		65FC06631BEE1CDF007D5DE6 /* Flux.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Flux.swift; sourceTree = "<group>"; };
 		65FC06651BEE1F1F007D5DE6 /* FluxCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FluxCell.swift; sourceTree = "<group>"; };
+		F93798F6892B08E0DC0C0576 /* FluxImageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FluxImageCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -191,6 +195,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				65BFDBDC1C108F3D00DDFED4 /* Kingfisher.framework in Frameworks */,
 				6508CB241BE8C9D6002AEC36 /* KeychainAccess.framework in Frameworks */,
 				6557A9281BE6107100891879 /* SwiftyJSON.framework in Frameworks */,
 				6557A92A1BE611FF00891879 /* Alamofire.framework in Frameworks */,
@@ -229,6 +234,7 @@
 		6557A8DB1BE600D900891879 = {
 			isa = PBXGroup;
 			children = (
+				65BFDBDB1C108F3D00DDFED4 /* Kingfisher.framework */,
 				65496E8A1BF1295A00117B50 /* images */,
 				6508CB231BE8C9D6002AEC36 /* KeychainAccess.framework */,
 				6557A9291BE611FF00891879 /* Alamofire.framework */,
@@ -330,6 +336,7 @@
 			children = (
 				6557A9311BE62E8E00891879 /* FluxesTableViewCell.swift */,
 				65FC06651BEE1F1F007D5DE6 /* FluxCell.swift */,
+				F93798F6892B08E0DC0C0576 /* FluxImageCell.swift */,
 			);
 			path = CustomTableViewCells;
 			sourceTree = "<group>";
@@ -429,7 +436,7 @@
 				6557A8E01BE600D900891879 /* Sources */,
 				6557A8E11BE600D900891879 /* Frameworks */,
 				6557A8E21BE600D900891879 /* Resources */,
-				6557A92B1BE6144E00891879 /* ShellScript */,
+				6557A92B1BE6144E00891879 /* Run Script */,
 			);
 			buildRules = (
 			);
@@ -559,7 +566,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		6557A92B1BE6144E00891879 /* ShellScript */ = {
+		6557A92B1BE6144E00891879 /* Run Script */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -568,7 +575,9 @@
 				"$(SRCROOT)/Carthage/Build/iOS/SwiftyJSON.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/KeychainAccess.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Kingfisher.framework",
 			);
+			name = "Run Script";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -638,6 +647,7 @@
 				653917531BE915FB00EEAD6C /* PublicTableViewCell.swift in Sources */,
 				6557A92E1BE6181500891879 /* FluxesTableViewController.swift in Sources */,
 				65CB24C51BEE2DEA009E988E /* User.swift in Sources */,
+				F9379831A37FC816D8E34347 /* FluxImageCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

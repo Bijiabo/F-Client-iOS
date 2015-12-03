@@ -8,6 +8,7 @@
 
 import UIKit
 import SwiftyJSON
+import Kingfisher
 
 class Flux: UITableViewController {
     
@@ -51,13 +52,22 @@ class Flux: UITableViewController {
         return 1
     }
 
+    override func tableView(_ tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 100
+    }
+
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("fluxCell", forIndexPath: indexPath) as! FluxCell
-
-        cell.textLabel?.text = _data["content"].string
-
-        return cell
+        if let pictureURL = _data["picture"]["url"].string {
+            let cell = tableView.dequeueReusableCellWithIdentifier("fluxImageCell", forIndexPath: indexPath) as! FluxImageCell
+            cell.label?.text = _data["content"].string
+            cell.image_view.kf_setImageWithURL(NSURL(string: "\(Config.host)\(pictureURL)")!)
+            return cell
+        } else {
+            let cell = tableView.dequeueReusableCellWithIdentifier("fluxCell", forIndexPath: indexPath) as! FluxCell
+            cell.textLabel?.text = _data["content"].string
+            return cell
+        }
     }
 
 

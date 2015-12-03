@@ -1,3 +1,5 @@
 github "Alamofire/Alamofire" ~> 3.0
 github "SwiftyJSON/SwiftyJSON"
 github "kishikawakatsumi/KeychainAccess"
+github "Alamofire/AlamofireImage" ~> 2.0
+github "onevcat/Kingfisher" >= 1.8
