@@ -147,6 +147,7 @@ class FAction: NSObject {
     
     // MARK: 
     class fluxes {
+        // create
         class func create(motion motion: String, content: String, image: NSData?, completeHandler: (success: Bool, description: String)->Void) {
             FNetwork.UPLOAD(path: "fluxes.json?token=\(FHelper.token)",
                 multipartFormData: { (multipartFormData) -> Void in
@@ -166,6 +167,23 @@ class FAction: NSObject {
                     completeHandler(success: success, description: description)
                 }
             )
+        }
+        
+        // destroy
+        class func destroy(id id: String, completeHandler: (success: Bool, description: String)->Void = {(success: Bool, description: String) in }) {
+            FNetwork.DELETE(path: "fluxes/\(id).json", parameters: ["token": FHelper.token]) { (request, response, json, error) -> Void in
+                var success: Bool = false
+                var description: String = String()
+                
+                if error == nil {
+                    success = !json["error"].boolValue
+                    description = json["description"].stringValue
+                    completeHandler(success: success, description: description)
+                } else {
+                    description = error.debugDescription
+                    completeHandler(success: success, description: description)
+                }
+            }
         }
     }
 }

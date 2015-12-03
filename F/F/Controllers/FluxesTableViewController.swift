@@ -29,6 +29,7 @@ class FluxesTableViewController: UITableViewController {
         refreshControl!.addTarget(self, action: Selector("doRefresh"), forControlEvents: UIControlEvents.ValueChanged)
         refreshControl!.attributedTitle = NSAttributedString(string: "pull to refresh")
         tableView.addSubview(refreshControl!)
+        tableView.sendSubviewToBack(refreshControl!)
     }
     
     deinit {
@@ -60,25 +61,19 @@ class FluxesTableViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let currentData = _data[indexPath.row]
+        let id = currentData["id"].stringValue
         if let pictureURL = currentData["picture"]["url"].string {
             let cell = tableView.dequeueReusableCellWithIdentifier("fluxImageCell", forIndexPath: indexPath) as! FluxImageCell
             cell.label?.text = currentData["content"].string
             cell.image_view.kf_setImageWithURL(NSURL(string: "\(Config.host)\(pictureURL)")!)
-            cell.id = currentData["id"].stringValue
+            cell.id = id
             return cell
         } else {
             let cell = tableView.dequeueReusableCellWithIdentifier("fluxCell", forIndexPath: indexPath) as! FluxCell
-            cell.label?.text = currentData["content"].string
-            cell.id = currentData["id"].stringValue
+            cell.label?.text = currentData["content"].string! + id
+            cell.id = id
             return cell
         }
-        
-//        let cell = tableView.dequeueReusableCellWithIdentifier("fluxes", forIndexPath: indexPath) as! FluxesTableViewCell
-//
-//        cell.textLabel?.text = _data[indexPath.row]["content"].string
-//        cell.id = _data[indexPath.row]["id"].stringValue
-//
-//        return cell
     }
 
     // MARK: - Navigation
@@ -180,5 +175,39 @@ extension FluxesTableViewController {
     func configureTableView() {
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 30.0
+    }
+}
+
+extension FluxesTableViewController {
+    //edit actions
+    override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
+        
+        let deleteButton = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "✕") { (rowAction, indexPath) -> Void in
+            let cell = self.tableView.cellForRowAtIndexPath(indexPath) as! FluxesTableViewCell
+            FAction.fluxes.destroy(id: cell.id!)
+            
+            var dataCache = self._data.arrayValue
+            dataCache.removeAtIndex(indexPath.row)
+            self._data = JSON(dataCache)
+            self.tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Left)
+        }
+        
+        let collectButton = UITableViewRowAction(style: UITableViewRowActionStyle.Normal, title: "★") { (rowAction, indexPath) -> Void in
+            
+        }
+        collectButton.backgroundColor = UIColor(red:0.99, green:0.82, blue:0.07, alpha:1)
+
+        return FHelper.current_user(self._data[indexPath.row]["user_id"].intValue) ? [collectButton, deleteButton] : [collectButton]
+    }
+    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        return true
+    }
+    
+    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        
+    }
+    
+    func rowAction_test(rowAction rowAction: UITableViewRowAction, indexPath: NSIndexPath) -> Void {
+        tableView.setEditing(false, animated: true)
     }
 }
