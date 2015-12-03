@@ -19,7 +19,7 @@ class FluxesTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        configureTableView()
         _setupViews()
         getData()
         
@@ -37,9 +37,7 @@ class FluxesTableViewController: UITableViewController {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(true)
-        
         __refreshTitle()
-        getData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -61,12 +59,26 @@ class FluxesTableViewController: UITableViewController {
 
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("fluxes", forIndexPath: indexPath) as! FluxesTableViewCell
-
-        cell.textLabel?.text = _data[indexPath.row]["content"].string
-        cell.id = _data[indexPath.row]["id"].stringValue
-
-        return cell
+        let currentData = _data[indexPath.row]
+        if let pictureURL = currentData["picture"]["url"].string {
+            let cell = tableView.dequeueReusableCellWithIdentifier("fluxImageCell", forIndexPath: indexPath) as! FluxImageCell
+            cell.label?.text = currentData["content"].string
+            cell.image_view.kf_setImageWithURL(NSURL(string: "\(Config.host)\(pictureURL)")!)
+            cell.id = currentData["id"].stringValue
+            return cell
+        } else {
+            let cell = tableView.dequeueReusableCellWithIdentifier("fluxCell", forIndexPath: indexPath) as! FluxCell
+            cell.label?.text = currentData["content"].string
+            cell.id = currentData["id"].stringValue
+            return cell
+        }
+        
+//        let cell = tableView.dequeueReusableCellWithIdentifier("fluxes", forIndexPath: indexPath) as! FluxesTableViewCell
+//
+//        cell.textLabel?.text = _data[indexPath.row]["content"].string
+//        cell.id = _data[indexPath.row]["id"].stringValue
+//
+//        return cell
     }
 
     // MARK: - Navigation
@@ -95,19 +107,13 @@ class FluxesTableViewController: UITableViewController {
     // MARK: - View Functions
     private func _setupViews () {
         __title("Fluxes")
-        //*
+
         if FHelper.logged_in {
             tabBarController?.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "New", style: UIBarButtonItemStyle.Done, target: self, action: Selector("newFlux:"))
         }else{
             tabBarController?.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Log in", style: UIBarButtonItemStyle.Done ,target: self, action: Selector("showLoginView:"))
         }
-        //*/
-        /*
-        tabBarController?.navigationItem.rightBarButtonItems = [
-            UIBarButtonItem(title: "New", style: UIBarButtonItemStyle.Done, target: self, action: Selector("newFlux:")),
-            UIBarButtonItem(title: "Log in", style: UIBarButtonItemStyle.Done ,target: self, action: Selector("showLoginView:"))
-        ]
-        */
+        
         FTool.UI.setupNavigationBarStyle(navigationController: navigationController)
     }
     
@@ -159,11 +165,20 @@ extension FluxesTableViewController: FStatus_LoginObserver {
     }
 }
 
+
+
 extension FluxesTableViewController {
     // do refresh
-    
     func doRefresh() {
         getData()
         refreshControl?.endRefreshing()
+    }
+}
+
+extension FluxesTableViewController {
+    // configure tableView
+    func configureTableView() {
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 30.0
     }
 }

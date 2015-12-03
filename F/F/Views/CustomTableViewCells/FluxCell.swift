@@ -8,8 +8,10 @@
 
 import UIKit
 
-class FluxCell: UITableViewCell {
+class FluxCell: FluxesTableViewCell {
 
+    @IBOutlet weak var label: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

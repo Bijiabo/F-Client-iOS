@@ -6,7 +6,7 @@
 import Foundation
 import UIKit
 
-class FluxImageCell: UITableViewCell {
+class FluxImageCell: FluxesTableViewCell {
 
     @IBOutlet weak var label: UILabel!
     @IBOutlet weak var image_view: UIImageView!

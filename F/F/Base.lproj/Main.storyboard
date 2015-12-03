@@ -197,6 +197,85 @@
                                     <segue destination="q00-5U-cRq" kind="show" identifier="toDetail" id="OuS-kU-7Kc"/>
                                 </connections>
                             </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="fluxCell" rowHeight="40" id="l8N-mh-c8N" customClass="FluxCell" customModule="F" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="136" width="600" height="40"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="l8N-mh-c8N" id="skK-nO-Md8">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="39.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eUx-4e-2Hb">
+                                            <rect key="frame" x="20" y="10" width="560" height="19.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="eUx-4e-2Hb" secondAttribute="trailing" constant="20" id="Ded-7v-N3p"/>
+                                        <constraint firstAttribute="bottom" secondItem="eUx-4e-2Hb" secondAttribute="bottom" constant="10" id="LXx-N9-iVl"/>
+                                        <constraint firstItem="eUx-4e-2Hb" firstAttribute="leading" secondItem="skK-nO-Md8" secondAttribute="leading" constant="20" id="Xr1-3Z-IUI"/>
+                                        <constraint firstItem="eUx-4e-2Hb" firstAttribute="top" secondItem="skK-nO-Md8" secondAttribute="top" constant="10" id="bZi-YZ-lKj"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="label" destination="eUx-4e-2Hb" id="Fk6-4r-8jw"/>
+                                    <segue destination="q00-5U-cRq" kind="show" identifier="toDetail" id="VDV-4l-Grc"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="fluxImageCell" rowHeight="179" id="hFU-jQ-bXQ" customClass="FluxImageCell" customModule="F" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="176" width="600" height="179"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hFU-jQ-bXQ" id="zp1-Ae-hm0">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="178.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X2y-ow-s4b">
+                                            <rect key="frame" x="20" y="8" width="560" height="42"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="mXu-n0-ict"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="geO-dk-luf">
+                                            <rect key="frame" x="20" y="70" width="560" height="100"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="100" id="aWM-Z6-CWa"/>
+                                            </constraints>
+                                        </imageView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailingMargin" secondItem="geO-dk-luf" secondAttribute="trailing" id="37N-CE-8ZE"/>
+                                        <constraint firstItem="X2y-ow-s4b" firstAttribute="leading" secondItem="zp1-Ae-hm0" secondAttribute="leading" constant="20" id="9pu-vw-d99"/>
+                                        <constraint firstAttribute="trailing" secondItem="X2y-ow-s4b" secondAttribute="trailing" constant="20" id="ACE-JI-XaT"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="geO-dk-luf" secondAttribute="bottom" id="FOb-gd-tgl"/>
+                                        <constraint firstItem="geO-dk-luf" firstAttribute="leading" secondItem="zp1-Ae-hm0" secondAttribute="leadingMargin" id="KyC-pU-NEj"/>
+                                        <constraint firstItem="geO-dk-luf" firstAttribute="leading" secondItem="zp1-Ae-hm0" secondAttribute="leading" constant="20" id="Mpk-kQ-BgR"/>
+                                        <constraint firstItem="X2y-ow-s4b" firstAttribute="top" secondItem="zp1-Ae-hm0" secondAttribute="topMargin" id="QzG-Md-rzo"/>
+                                        <constraint firstAttribute="trailing" secondItem="geO-dk-luf" secondAttribute="trailing" constant="20" id="Vl9-oS-dC8"/>
+                                        <constraint firstItem="X2y-ow-s4b" firstAttribute="leading" secondItem="zp1-Ae-hm0" secondAttribute="leadingMargin" id="WQe-HI-XCJ"/>
+                                        <constraint firstItem="geO-dk-luf" firstAttribute="top" secondItem="X2y-ow-s4b" secondAttribute="bottom" id="au2-Nf-KXf"/>
+                                        <constraint firstItem="geO-dk-luf" firstAttribute="top" secondItem="X2y-ow-s4b" secondAttribute="bottom" constant="20" id="eei-aN-YJB"/>
+                                        <constraint firstItem="X2y-ow-s4b" firstAttribute="trailing" secondItem="zp1-Ae-hm0" secondAttribute="trailingMargin" id="qDr-za-LWr"/>
+                                    </constraints>
+                                    <variation key="default">
+                                        <mask key="constraints">
+                                            <exclude reference="qDr-za-LWr"/>
+                                            <exclude reference="WQe-HI-XCJ"/>
+                                            <exclude reference="KyC-pU-NEj"/>
+                                            <exclude reference="37N-CE-8ZE"/>
+                                            <exclude reference="au2-Nf-KXf"/>
+                                        </mask>
+                                    </variation>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="image_view" destination="geO-dk-luf" id="FuG-tf-CS1"/>
+                                    <outlet property="label" destination="X2y-ow-s4b" id="qQ8-62-Bbv"/>
+                                    <segue destination="q00-5U-cRq" kind="show" identifier="toDetail" id="H4j-to-fvv"/>
+                                </connections>
+                            </tableViewCell>
                         </prototypes>
                         <connections>
                             <outlet property="dataSource" destination="Wmm-Wb-Lem" id="lyA-Zw-BkD"/>
@@ -226,41 +305,77 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="fluxCell" id="KRJ-bn-5MX" customClass="FluxCell" customModule="F" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="fluxCell" rowHeight="40" id="KRJ-bn-5MX" customClass="FluxCell" customModule="F" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="92" width="600" height="40"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KRJ-bn-5MX" id="re6-EP-ZFE">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="39.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8U4-u6-Krh">
+                                            <rect key="frame" x="20" y="10" width="560" height="19.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="8U4-u6-Krh" firstAttribute="top" secondItem="re6-EP-ZFE" secondAttribute="top" constant="10" id="DCg-jg-NtS"/>
+                                        <constraint firstAttribute="trailing" secondItem="8U4-u6-Krh" secondAttribute="trailing" constant="20" id="NiJ-Ed-H9N"/>
+                                        <constraint firstItem="8U4-u6-Krh" firstAttribute="leading" secondItem="re6-EP-ZFE" secondAttribute="leading" constant="20" id="WNA-vW-jIa"/>
+                                        <constraint firstAttribute="bottom" secondItem="8U4-u6-Krh" secondAttribute="bottom" constant="10" id="pe1-Te-2pZ"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="label" destination="8U4-u6-Krh" id="aHz-vg-OF5"/>
+                                </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="fluxImageCell" rowHeight="179" id="RMj-Q0-9Xk" customClass="FluxImageCell" customModule="F" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="136" width="600" height="179"/>
+                                <rect key="frame" x="0.0" y="132" width="600" height="179"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="RMj-Q0-9Xk" id="fkP-Fe-0m0">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="178.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ch7-TR-acB">
-                                            <rect key="frame" x="8" y="8" width="584" height="20.5"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ch7-TR-acB">
+                                            <rect key="frame" x="20" y="8" width="560" height="42"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="nUM-rL-rUb"/>
+                                            </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="BJW-S2-FTP">
-                                            <rect key="frame" x="8" y="28" width="584" height="142"/>
+                                            <rect key="frame" x="20" y="70" width="560" height="100"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="100" id="sWk-Jh-if2"/>
+                                            </constraints>
                                         </imageView>
                                     </subviews>
                                     <constraints>
+                                        <constraint firstItem="Ch7-TR-acB" firstAttribute="leading" secondItem="fkP-Fe-0m0" secondAttribute="leading" constant="20" id="14Y-B6-S09"/>
                                         <constraint firstItem="Ch7-TR-acB" firstAttribute="trailing" secondItem="fkP-Fe-0m0" secondAttribute="trailingMargin" id="2cU-BE-9uO"/>
                                         <constraint firstItem="BJW-S2-FTP" firstAttribute="leading" secondItem="fkP-Fe-0m0" secondAttribute="leadingMargin" id="4HZ-F9-5yn"/>
                                         <constraint firstItem="Ch7-TR-acB" firstAttribute="leading" secondItem="fkP-Fe-0m0" secondAttribute="leadingMargin" id="9a4-Cw-dpf"/>
                                         <constraint firstItem="Ch7-TR-acB" firstAttribute="top" secondItem="fkP-Fe-0m0" secondAttribute="topMargin" id="JI3-WF-c9K"/>
-                                        <constraint firstItem="BJW-S2-FTP" firstAttribute="top" secondItem="Ch7-TR-acB" secondAttribute="bottom" id="WIH-lQ-nmN"/>
+                                        <constraint firstItem="BJW-S2-FTP" firstAttribute="top" secondItem="Ch7-TR-acB" secondAttribute="bottom" constant="20" id="WIH-lQ-nmN"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="BJW-S2-FTP" secondAttribute="bottom" id="XUG-LS-Bev"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="BJW-S2-FTP" secondAttribute="trailing" id="dxP-28-T86"/>
                                         <constraint firstItem="BJW-S2-FTP" firstAttribute="top" secondItem="Ch7-TR-acB" secondAttribute="bottom" id="glc-XH-jTi"/>
+                                        <constraint firstItem="BJW-S2-FTP" firstAttribute="leading" secondItem="fkP-Fe-0m0" secondAttribute="leading" constant="20" id="ja5-7Q-0NX"/>
+                                        <constraint firstAttribute="trailing" secondItem="Ch7-TR-acB" secondAttribute="trailing" constant="20" id="jk9-kd-ssZ"/>
+                                        <constraint firstAttribute="trailing" secondItem="BJW-S2-FTP" secondAttribute="trailing" constant="20" id="pfi-Cy-MSc"/>
                                     </constraints>
+                                    <variation key="default">
+                                        <mask key="constraints">
+                                            <exclude reference="2cU-BE-9uO"/>
+                                            <exclude reference="9a4-Cw-dpf"/>
+                                            <exclude reference="4HZ-F9-5yn"/>
+                                            <exclude reference="dxP-28-T86"/>
+                                            <exclude reference="glc-XH-jTi"/>
+                                        </mask>
+                                    </variation>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="image_view" destination="BJW-S2-FTP" id="T55-ae-9hd"/>
@@ -756,4 +871,7 @@
         <image name="settings" width="25" height="25"/>
         <image name="users" width="25" height="25"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="VDV-4l-Grc"/>
+    </inferredMetricsTieBreakers>
 </document>
